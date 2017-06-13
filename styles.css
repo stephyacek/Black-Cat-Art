@@ -1,3 +1,9 @@
 body {
   background-color: #d7dcde;
+  font-family: 'Spectral', serif;
+}
+
+header {
+  font-family: 'Fredericka the Great', sans-serif;
+  text-align: center;
 }
