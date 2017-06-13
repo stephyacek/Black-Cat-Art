@@ -46,3 +46,22 @@ header {
   border: 1px solid black;
   margin: 40px;
 }
+
+footer {
+  background-color: #acb6bb;
+  color: white;
+  font-weight: lighter;
+  padding: 5rem;
+  text-align: center;
+}
+
+.tel,
+.email {
+  text-decoration: none;
+  color: white;
+}
+
+.tel:hover,
+.email:hover {
+  color: #eaeaea;
+}
