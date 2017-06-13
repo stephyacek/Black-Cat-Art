@@ -7,7 +7,7 @@ header {
   font-family: 'Fredericka the Great', sans-serif;
   text-align: center;
   font-size: 4rem;
-  padding: 2rem;
+  padding: 3rem;
 }
 
 .title-cat {
@@ -31,12 +31,10 @@ header {
 }
 
 .artwork img {
-  max-height: 400px;
-  padding: 1rem 1rem 2rem;
-  height: 400px;
-  width: 400px;
-  margin: 1rem;
-  border: 1px solid black;
+  max-height: 300px;
+  padding: 2rem;
+  height: 300px;
+  width: 300px;
 }
 
 .product {
@@ -44,4 +42,6 @@ header {
   max-width: 400px;
   display: inline-block;
   text-align: center;
+  border: 1px solid black;
+  margin: 50px;
 }
