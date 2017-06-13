@@ -24,3 +24,7 @@ header {
 .company-name {
   font-weight: 600;
 }
+
+div img {
+  max-width: 400px;
+}
