@@ -8,13 +8,19 @@ header {
   font-family: 'Fredericka the Great', sans-serif;
   text-align: center;
   font-size: 4rem;
+  padding: 2rem;
 }
 
-.titlecat {
+.title-cat {
   max-width: 35px;
 }
 
-.sitedescription {
-  padding: 1rem;
+.site-description {
+  padding: 1.5rem;
   background-color: #e4e8ea;
+  text-align: center;
+}
+
+.company-name {
+  font-weight: 600;
 }
