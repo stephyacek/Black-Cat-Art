@@ -6,4 +6,9 @@ body {
 header {
   font-family: 'Fredericka the Great', sans-serif;
   text-align: center;
+  font-size: 4rem;
+}
+
+.titlecat {
+  max-width: 35px;
 }
