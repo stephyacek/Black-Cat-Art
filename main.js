@@ -7,16 +7,22 @@ var product = [
   { image: 'images/photo2.jpg',
     title: 'Risible Rollings'
   },
-  {title: 'Serpentine and Sarcastic'
+  { image: 'images/photo3.jpg',
+    title: 'Serpentine and Sarcastic'
   },
-  {title: 'Corpulent Claws'
+  { image: 'images/photo4.jpg',
+    title: 'Corpulent Claws'
   },
-  {title: 'Scarlet Sartorial Sense'
+  { image: 'images/photo5.jpg',
+    title: 'Scarlet Sartorial Sense'
   },
-  {title: 'Fulsome Fur'
+  { image: 'images/photo6.jpg',
+    title: 'Fulsome Fur'
   },
-  {title: 'Zealous Eater'
+  { image: 'images/photo7.jpg',
+    title: 'Zealous Eater'
   },
-  {title: 'Flaming Fuschia'
+  { image: 'images/photo8.jpg',
+    title: 'Flaming Fuschia'
   }
 ]
