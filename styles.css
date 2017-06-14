@@ -7,12 +7,12 @@ body {
 header {
   font-family: 'Fredericka the Great', sans-serif;
   text-align: center;
-  font-size: 5rem;
+  font-size: 6rem;
   padding: 3rem;
 }
 
 .title-cat {
-  max-width: 2rem;
+  max-width: 3rem;
 }
 
 .site-description {
@@ -44,6 +44,7 @@ header {
   display: inline-block;
   text-align: center;
   border: 1px solid black;
+  border-radius: 1rem;
   margin: 40px;
   background-color: #e4e8ea;
 }
