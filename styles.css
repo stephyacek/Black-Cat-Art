@@ -1,0 +1,75 @@
+body {
+  background-color: #d7dcde;
+  font-family: 'Spectral', serif;
+  margin: 0;
+}
+
+header {
+  font-family: 'Fredericka the Great', sans-serif;
+  text-align: center;
+  font-size: 6rem;
+  padding: 3rem;
+}
+
+.title-cat {
+  max-width: 3rem;
+}
+
+.site-description {
+  padding: 1.5rem;
+  background-color: #e4e8ea;
+  text-align: center;
+}
+
+.company-name {
+  font-weight: 600;
+}
+
+.artwork {
+  margin: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.artwork img {
+  max-height: 300px;
+  padding: 2rem;
+  height: 300px;
+  width: 300px;
+}
+
+.product {
+  padding: 1rem;
+  max-width: 400px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin: 40px;
+  background-color: #e4e8ea;
+}
+
+.product-description {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+footer {
+  background-color: #acb6bb;
+  color: white;
+  font-weight: 300;
+  padding: 5rem;
+  text-align: center;
+}
+
+.tel,
+.email {
+  text-decoration: none;
+  color: white;
+}
+
+.tel:hover,
+.email:hover {
+  color: #eaeaea;
+}
