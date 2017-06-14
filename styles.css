@@ -12,7 +12,7 @@ header {
 }
 
 .title-cat {
-  max-width: 35px;
+  max-width: 2rem;
 }
 
 .site-description {
@@ -50,7 +50,7 @@ header {
 footer {
   background-color: #acb6bb;
   color: white;
-  font-weight: lighter;
+  font-weight: 300;
   padding: 5rem;
   text-align: center;
 }
