@@ -74,3 +74,48 @@ footer {
 .email:hover {
   color: #eaeaea;
 }
+
+.product-detail img {
+  max-width: 50%;
+  margin-left: 5rem;
+  display: inline-block;
+  padding: 2rem;
+}
+
+.box-content {
+  max-width: 40%;
+  margin: 0;
+  display: inline-block;
+  padding: 2rem 0 2rem 6rem;
+  text-align: center;
+}
+
+.artwork-detail-page {
+  margin: 4rem;
+  padding: 2rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  background-color: #e4e8ea;
+  box-shadow: #777 2px 0 7px;
+}
+
+.product-title-detail h2 {
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.product-description-detail {
+  padding: 1rem;
+  display: inline-block;
+}
+
+.product-description-size {
+  padding: 1rem;
+  display: inline-block;
+}
+
+.product-description-price {
+  padding: 1rem;
+  display: inline-block;
+}
