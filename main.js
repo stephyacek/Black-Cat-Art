@@ -147,13 +147,13 @@ function renderArtwork(artwork) {
   // create span containing image
   var $printContainer = document.createElement('span')
   var $print = document.createElement('img')
-  $printContainer.setAttribute('class', 'product-detail hidden')
+  $printContainer.setAttribute('class', 'product-detail ')
   $print.setAttribute('src', artwork.image)
   $printContainer.appendChild($print)
 
   // create text description of the image
   var $productDetailsContainer = document.createElement('span')
-  $productDetailsContainer.setAttribute('class', 'product-details-container hidden')
+  $productDetailsContainer.setAttribute('class', 'product-details-container ')
   var $titleContainer = document.createElement('span')
   var $title = document.createElement('h2')
   $titleContainer.setAttribute('class', 'product-title-detail')

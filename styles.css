@@ -122,3 +122,15 @@ footer {
   padding: 1rem;
   display: inline-block;
 }
+
+.back {
+  display: flex;
+  text-decoration: none;
+  color: #49545a;
+  max-width: 10rem;
+}
+
+.back:hover {
+  color: #acb6bb;
+  cursor: pointer;
+}
