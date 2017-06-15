@@ -114,6 +114,7 @@ var products = [
 var $siteDescription = document.querySelector('.site-description')
 var $artworkSection = document.querySelector('.artwork')
 var $product = document.getElementsByClassName('product')
+var $back = document.querySelector('.back')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderPhotos(products)
@@ -183,4 +184,20 @@ function createArtDetail(className, detail) {
   return artDetail
 }
 
-var $back = document.querySelector('.back')
+$product.addEventListener('click', function (event) {
+  var $id = event.target.getAttribute('data-id')
+  findArt($id)
+  $artworkSection.classList.add('hidden')
+  $siteDescription.classList.add('hidden')
+  $artDetailPage.classList.remove('hidden')
+})
+
+function findArt(products, id) {
+  for (var i = 0; i < products.length; i++) {
+    if (products[i].id === id) {
+      var matches = []
+      matches.push(products[i])
+    }
+    return renderArtwork(matches)
+  }
+}
