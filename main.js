@@ -9,11 +9,7 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price:
-    { small: 'Small: $16.99 |',
-      medium: 'Medium: $19.99 |',
-      large: 'Large: $22.99'
-    }
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
   },
   {
     image: 'images/rolling.jpg',
@@ -24,11 +20,7 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price:
-    { small: 'Small: $16.99 |',
-      medium: 'Medium: $19.99 |',
-      large: 'Large: $22.99'
-    }
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
   },
   {
     image: 'images/serpentine.jpg',
@@ -39,11 +31,7 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price:
-    { small: 'Small: $16.99 |',
-      medium: 'Medium: $19.99 |',
-      large: 'Large: $22.99'
-    }
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
   },
   {
     image: 'images/claws.jpg',
@@ -54,11 +42,7 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price:
-    { small: 'Small: $16.99 |',
-      medium: 'Medium: $19.99 |',
-      large: 'Large: $22.99'
-    }
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
   },
   {
     image: 'images/scarlet.jpg',
@@ -69,11 +53,7 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price:
-    { small: 'Small: $16.99 |',
-      medium: 'Medium: $19.99 |',
-      large: 'Large: $22.99'
-    }
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
   },
   {
     image: 'images/fulsome.jpg',
@@ -84,11 +64,7 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price:
-    { small: 'Small: $16.99 |',
-      medium: 'Medium: $19.99 |',
-      large: 'Large: $22.99'
-    }
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
   },
   {
     image: 'images/zealous.jpg',
@@ -99,11 +75,7 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price:
-    { small: 'Small: $16.99 |',
-      medium: 'Medium: $19.99 |',
-      large: 'Large: $22.99'
-    }
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
   },
   {
     image: 'images/fuschia.jpg',
@@ -114,11 +86,7 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price:
-    { small: 'Small: $16.99 |',
-      medium: 'Medium: $19.99 |',
-      large: 'Large: $22.99'
-    }
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
   }
 ]
 
@@ -149,8 +117,6 @@ function renderPhotos(products) {
   }
 }
 
-///////RENDERING DETAILS PAGE/////////
-
 var $artDetailPage = document.querySelector('.artwork-detail-page')
 
 function renderArtwork(artwork) {
@@ -174,7 +140,6 @@ function renderArtwork(artwork) {
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.medium))
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.large))
   $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
-
 
   // append both the image and the description to the detail page
   $artDetailPage.appendChild($productDetailsContainer)
