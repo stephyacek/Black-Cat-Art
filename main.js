@@ -111,12 +111,12 @@ var products = [
   }
 ]
 
+var $siteDescription = document.querySelector('.site-description')
 var $artworkSection = document.querySelector('.artwork')
 var $product = document.getElementsByClassName('product')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderPhotos(products)
-  renderDetails(products)
 })
 
 function createEachProduct(products, productId) {
@@ -126,7 +126,7 @@ function createEachProduct(products, productId) {
   $productDescription.setAttribute('class', 'product-description')
   $image.setAttribute('src', products.image)
   $product.setAttribute('class', 'product')
-  $product.setAttribute('id', productId)
+  $product.setAttribute('data-id', productId)
   $product.appendChild($image)
   $product.appendChild($productDescription)
   $productDescription.textContent = products.title
@@ -169,18 +169,18 @@ function renderArtwork(artwork) {
   // append both the image and the description to the detail page
   $artDetailPage.appendChild($printContainer)
   $artDetailPage.appendChild($productDetailsContainer)
-
+  return $artDetailPage
 }
-
-function renderDetails(products) {
-  for (var i = 0; i < products.length; i++) {
-    renderArtwork(products[i])
-  }
-}
-
+// function renderDetails(products) {
+//  for (var i = 0; i < products.length; i++) {
+//    renderArtwork(products[i])
+//  }
+// }
 function createArtDetail(className, detail) {
   var artDetail = document.createElement('span')
   artDetail.setAttribute('class', className)
   artDetail.textContent = detail
   return artDetail
 }
+
+var $back = document.querySelector('.back')
