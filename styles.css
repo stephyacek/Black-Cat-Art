@@ -12,7 +12,7 @@ header {
 }
 
 .title-cat {
-  max-width: 3rem;
+  max-width: 4rem;
 }
 
 .site-description {
@@ -43,11 +43,15 @@ header {
   max-width: 400px;
   display: inline-block;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid #aaa;
   border-radius: 1rem;
   margin: 40px;
   background-color: #e4e8ea;
   box-shadow: #777 2px 0 7px;
+}
+
+.product:hover {
+  cursor: pointer;
 }
 
 .product-description {
@@ -82,7 +86,7 @@ footer {
   padding: 2rem;
 }
 
-.box-content {
+.product-details-container {
   max-width: 40%;
   margin: 0;
   display: inline-block;
@@ -93,7 +97,7 @@ footer {
 .artwork-detail-page {
   margin: 4rem;
   padding: 2rem;
-  border: 1px solid black;
+  border: 1px solid #aaa;
   border-radius: 1rem;
   background-color: #e4e8ea;
   box-shadow: #777 2px 0 7px;
@@ -105,17 +109,17 @@ footer {
   border-bottom: 1px solid black;
 }
 
-.product-description-detail {
+.product-summary-detail {
   padding: 1rem;
   display: inline-block;
 }
 
-.product-description-size {
+.product-size-detail {
   padding: 1rem;
   display: inline-block;
 }
 
-.product-description-price {
+.product-price-detail {
   padding: 1rem;
   display: inline-block;
 }

@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 var products = [
   {
     image: 'images/turquoise.jpg',
@@ -127,6 +126,7 @@ var $artworkSection = document.querySelector('.artwork')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderPhotos(products)
+  renderDetails(products)
 })
 
 function createEachProduct(products) {
@@ -147,4 +147,49 @@ function renderPhotos(products) {
     var $product = createEachProduct(products[i])
     $artworkSection.appendChild($product)
   }
+}
+
+///////RENDERING DETAILS PAGE/////////
+
+var $artDetailPage = document.querySelector('.artwork-detail-page')
+
+function renderArtwork(artwork) {
+  // create span containing image
+  var $printContainer = document.createElement('span')
+  var $print = document.createElement('img')
+  $printContainer.setAttribute('class', 'product-detail')
+  $print.setAttribute('src', artwork.image)
+  $printContainer.appendChild($print)
+
+  // create text description of the image
+  var $productDetailsContainer = document.createElement('span')
+  $productDetailsContainer.setAttribute('class', 'product-details-container')
+  var $titleContainer = document.createElement('span')
+  var $title = document.createElement('h2')
+  $titleContainer.setAttribute('class', 'product-title-detail')
+  $titleContainer.appendChild($title)
+  $productDetailsContainer.appendChild($titleContainer)
+  $productDetailsContainer.appendChild(createArtDetail('product-summary-detail', artwork.description))
+  $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.small))
+  $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.medium))
+  $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.large))
+  $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
+
+
+  // append both the image and the description to the detail page
+  $artDetailPage.appendChild($productDetailsContainer)
+  $artDetailPage.appendChild($printContainer)
+}
+
+function renderDetails(product) {
+  for (var i = 0; i < products.length; i++) {
+    renderArtwork(products[i])
+  }
+}
+
+function createArtDetail(className, detail) {
+  var artDetail = document.createElement('span')
+  artDetail.setAttribute('class', className)
+  artDetail.textContent = detail
+  return artDetail
 }
