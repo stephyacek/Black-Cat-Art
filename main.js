@@ -9,7 +9,8 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 1
   },
   {
     image: 'images/rolling.jpg',
@@ -20,7 +21,8 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 2
   },
   {
     image: 'images/serpentine.jpg',
@@ -31,7 +33,8 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 3
   },
   {
     image: 'images/claws.jpg',
@@ -42,7 +45,8 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 4
   },
   {
     image: 'images/scarlet.jpg',
@@ -53,7 +57,8 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 5
   },
   {
     image: 'images/fulsome.jpg',
@@ -64,7 +69,9 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 6
+
   },
   {
     image: 'images/zealous.jpg',
@@ -75,7 +82,8 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 7
   },
   {
     image: 'images/fuschia.jpg',
@@ -86,7 +94,20 @@ var products = [
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
-    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99'
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 8
+  },
+  {
+    image: 'images/chiaroscuro.jpg',
+    title: 'Chiaroscuro',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 9
   }
 ]
 
@@ -133,6 +154,7 @@ function renderArtwork(artwork) {
   var $titleContainer = document.createElement('span')
   var $title = document.createElement('h2')
   $titleContainer.setAttribute('class', 'product-title-detail')
+  $title.textContent = artwork.title
   $titleContainer.appendChild($title)
   $productDetailsContainer.appendChild($titleContainer)
   $productDetailsContainer.appendChild(createArtDetail('product-summary-detail', artwork.description))
@@ -142,8 +164,9 @@ function renderArtwork(artwork) {
   $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
 
   // append both the image and the description to the detail page
-  $artDetailPage.appendChild($productDetailsContainer)
   $artDetailPage.appendChild($printContainer)
+  $artDetailPage.appendChild($productDetailsContainer)
+
 }
 
 function renderDetails(product) {
