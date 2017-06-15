@@ -3,35 +3,123 @@
 var products = [
   {
     image: 'images/turquoise.jpg',
-    title: 'Something With Turquoise'
+    title: 'Something With Turquoise',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price:
+    { small: 'Small: $16.99 |',
+      medium: 'Medium: $19.99 |',
+      large: 'Large: $22.99'
+    }
   },
   {
     image: 'images/rolling.jpg',
-    title: 'Risible Rollings'
+    title: 'Risible Rollings',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price:
+    { small: 'Small: $16.99 |',
+      medium: 'Medium: $19.99 |',
+      large: 'Large: $22.99'
+    }
   },
   {
     image: 'images/serpentine.jpg',
-    title: 'Serpentine and Sarcastic'
+    title: 'Serpentine and Sarcastic',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price:
+    { small: 'Small: $16.99 |',
+      medium: 'Medium: $19.99 |',
+      large: 'Large: $22.99'
+    }
   },
   {
     image: 'images/claws.jpg',
-    title: 'Corpulent Claws'
+    title: 'Corpulent Claws',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price:
+    { small: 'Small: $16.99 |',
+      medium: 'Medium: $19.99 |',
+      large: 'Large: $22.99'
+    }
   },
   {
     image: 'images/scarlet.jpg',
-    title: 'Scarlet Sartorial Sense'
+    title: 'Scarlet Sartorial Sense',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price:
+    { small: 'Small: $16.99 |',
+      medium: 'Medium: $19.99 |',
+      large: 'Large: $22.99'
+    }
   },
   {
     image: 'images/fulsome.jpg',
-    title: 'Fulsome Fur'
+    title: 'Fulsome Fur',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price:
+    { small: 'Small: $16.99 |',
+      medium: 'Medium: $19.99 |',
+      large: 'Large: $22.99'
+    }
   },
   {
     image: 'images/zealous.jpg',
-    title: 'Zealous Eater'
+    title: 'Zealous Eater',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price:
+    { small: 'Small: $16.99 |',
+      medium: 'Medium: $19.99 |',
+      large: 'Large: $22.99'
+    }
   },
   {
     image: 'images/fuschia.jpg',
-    title: 'Flaming Fuschia'
+    title: 'Flaming Fuschia',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price:
+    { small: 'Small: $16.99 |',
+      medium: 'Medium: $19.99 |',
+      large: 'Large: $22.99'
+    }
   }
 ]
 
