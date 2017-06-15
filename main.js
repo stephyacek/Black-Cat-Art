@@ -10,7 +10,7 @@ var products = [
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
-    id: 1
+    id: 0
   },
   {
     image: 'images/rolling.jpg',
@@ -22,7 +22,7 @@ var products = [
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
-    id: 2
+    id: 1
   },
   {
     image: 'images/serpentine.jpg',
@@ -34,7 +34,7 @@ var products = [
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
-    id: 3
+    id: 2
   },
   {
     image: 'images/claws.jpg',
@@ -46,7 +46,7 @@ var products = [
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
-    id: 4
+    id: 3
   },
   {
     image: 'images/scarlet.jpg',
@@ -58,7 +58,7 @@ var products = [
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
-    id: 5
+    id: 4
   },
   {
     image: 'images/fulsome.jpg',
@@ -70,7 +70,7 @@ var products = [
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
-    id: 6
+    id: 5
 
   },
   {
@@ -83,7 +83,7 @@ var products = [
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
-    id: 7
+    id: 6
   },
   {
     image: 'images/fuschia.jpg',
@@ -95,7 +95,7 @@ var products = [
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
-    id: 8
+    id: 7
   },
   {
     image: 'images/chiaroscuro.jpg',
@@ -107,24 +107,26 @@ var products = [
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
-    id: 9
+    id: 8
   }
 ]
 
 var $artworkSection = document.querySelector('.artwork')
+var $product = document.getElementsByClassName('product')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderPhotos(products)
   renderDetails(products)
 })
 
-function createEachProduct(products) {
+function createEachProduct(products, productId) {
   var $product = document.createElement('span')
   var $productDescription = document.createElement('span')
   var $image = document.createElement('img')
   $productDescription.setAttribute('class', 'product-description')
   $image.setAttribute('src', products.image)
   $product.setAttribute('class', 'product')
+  $product.setAttribute('id', productId)
   $product.appendChild($image)
   $product.appendChild($productDescription)
   $productDescription.textContent = products.title
@@ -133,7 +135,8 @@ function createEachProduct(products) {
 
 function renderPhotos(products) {
   for (var i = 0; i < products.length; i++) {
-    var $product = createEachProduct(products[i])
+    var $product = createEachProduct(products[i], i)
+    products.textContent = products[i].id.value
     $artworkSection.appendChild($product)
   }
 }
@@ -169,7 +172,7 @@ function renderArtwork(artwork) {
 
 }
 
-function renderDetails(product) {
+function renderDetails(products) {
   for (var i = 0; i < products.length; i++) {
     renderArtwork(products[i])
   }
