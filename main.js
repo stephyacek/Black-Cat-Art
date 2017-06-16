@@ -195,7 +195,6 @@ function renderArtwork(artwork) {
   $print.setAttribute('src', artwork.image)
   $printContainer.appendChild($print)
 
-  // create text description of the image
   var $productDetailsContainer = document.createElement('span')
   $productDetailsContainer.setAttribute('class', 'product-details-container ')
   var $titleContainer = document.createElement('span')
@@ -210,7 +209,6 @@ function renderArtwork(artwork) {
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.large))
   $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
 
-  // append both the image and the description to the detail page
   $artDetailPage.appendChild($printContainer)
   $artDetailPage.appendChild($productDetailsContainer)
   return $artDetailPage
