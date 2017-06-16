@@ -165,7 +165,7 @@ var $products = document.getElementsByClassName('product')
 var $images = document.getElementsByClassName('artwork-image')
 var $productDescriptions = document.getElementsByClassName('product-description')
 var $artDetailPage = document.querySelector('.artwork-detail-page')
-var $back = document.querySelector('.back')
+var $back = document.querySelector('.artwork-detail-page')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderPhotos(products)
@@ -185,6 +185,7 @@ function createEachProduct(product, productId) {
   var $product = document.createElement('span')
   var $productDescription = document.createElement('span')
   var $image = document.createElement('img')
+  var $back = document.createElement('span')
   $productDescription.setAttribute('class', 'product-description')
   $image.setAttribute('src', product.image)
   $image.setAttribute('class', 'artwork-image')
@@ -208,8 +209,11 @@ function renderPhotos(product) {
 function renderArtwork(artwork) {
   var $printContainer = document.createElement('span')
   var $print = document.createElement('img')
+  var $back = document.createElement('span')
   $printContainer.setAttribute('class', 'product-detail ')
   $print.setAttribute('src', artwork.image)
+  $back.setAttribute('class', 'back')
+  $back.textContent = 'Back to Gallery'
   $printContainer.appendChild($print)
   var $productDetailsContainer = document.createElement('span')
   $productDetailsContainer.setAttribute('class', 'product-details-container ')
@@ -224,6 +228,7 @@ function renderArtwork(artwork) {
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.medium))
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.large))
   $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
+  $artDetailPage.appendChild($back)
   $artDetailPage.appendChild($printContainer)
   $artDetailPage.appendChild($productDetailsContainer)
   return $artDetailPage
@@ -248,4 +253,15 @@ function match(event) {
       renderArtwork(products[i])
     }
   }
+}
+
+$back.addEventListener('click', function () {
+  goBack(event)
+})
+
+function goBack(event) {
+  $artworkSection.classList.remove('hidden')
+  $siteDescription.classList.remove('hidden')
+  $artDetailPage.classList.add('hidden')
+  $artDetailPage.innerHTML = ''
 }
