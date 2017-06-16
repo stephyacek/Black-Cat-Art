@@ -176,31 +176,31 @@ document.addEventListener('DOMContentLoaded', function () {
 function addClickEvent(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', function () {
-      matching(event)
+      match(event)
     })
   }
 }
 
-function createEachProduct(products, productId) {
+function createEachProduct(product, productId) {
   var $product = document.createElement('span')
   var $productDescription = document.createElement('span')
   var $image = document.createElement('img')
   $productDescription.setAttribute('class', 'product-description')
-  $image.setAttribute('src', products.image)
+  $image.setAttribute('src', product.image)
   $image.setAttribute('class', 'artwork-image')
   $product.setAttribute('class', 'product')
-  $product.setAttribute('data-id', productId)
-  $image.setAttribute('data-id', productId)
-  $productDescription.setAttribute('data-id', productId)
+  $product.setAttribute('data-id', product.id)
+  $image.setAttribute('data-id', product.id)
+  $productDescription.setAttribute('data-id', product.id)
   $product.appendChild($image)
   $product.appendChild($productDescription)
-  $productDescription.textContent = products.title
+  $productDescription.textContent = product.title
   return $product
 }
 
 function renderPhotos(product) {
   for (var i = 0; i < product.length; i++) {
-    var $product = createEachProduct(product[i], i)
+    var $product = createEachProduct(product[i])
     $artworkSection.appendChild($product)
   }
 }
@@ -236,7 +236,7 @@ function createArtDetail(className, detail) {
   return artDetail
 }
 
-function matching(event) {
+function match(event) {
   var $id = event.target.getAttribute('data-id')
   var matches = []
   for (var i = 0; i < products.length; i++) {
