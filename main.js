@@ -5,7 +5,8 @@ var products = [
     title: 'Something With Turquoise',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -17,7 +18,8 @@ var products = [
     title: 'Risible Rollings',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -29,7 +31,8 @@ var products = [
     title: 'Serpentine and Sarcastic',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -41,7 +44,8 @@ var products = [
     title: 'Corpulent Claws',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -53,7 +57,8 @@ var products = [
     title: 'Scarlet Sartorial Sense',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -65,7 +70,8 @@ var products = [
     title: 'Fulsome Fur',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -78,7 +84,8 @@ var products = [
     title: 'Zealous Eater',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -90,7 +97,8 @@ var products = [
     title: 'Flaming Fuschia',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -102,7 +110,8 @@ var products = [
     title: 'Chiaroscuro',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -114,7 +123,8 @@ var products = [
     title: 'Valiant Vocalist',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -126,7 +136,8 @@ var products = [
     title: 'Energetic Enigma',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -138,7 +149,8 @@ var products = [
     title: 'Capricious Curiosity',
     description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
     size:
-    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+    {
+      small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
       medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
       large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
     },
@@ -149,16 +161,25 @@ var products = [
 
 var $siteDescription = document.querySelector('.site-description')
 var $artworkSection = document.querySelector('.artwork')
-var $product = document.getElementsByClassName('product')
-var $image = document.getElementsByClassName('artwork-image')
-var $productDescription = document.getElementsByClassName('product-description')
+var $products = document.getElementsByClassName('product')
+var $images = document.getElementsByClassName('artwork-image')
+var $productDescriptions = document.getElementsByClassName('product-description')
+var $artDetailPage = document.querySelector('.artwork-detail-page')
 var $back = document.querySelector('.back')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderPhotos(products)
-  addEventsToArtwork($image)
-  addEventsToArtwork($productDescription)
+  addClickEvent($images)
+  addClickEvent($productDescriptions)
 })
+
+function addClickEvent(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', function () {
+      matching(event)
+    })
+  }
+}
 
 function createEachProduct(products, productId) {
   var $product = document.createElement('span')
@@ -177,24 +198,19 @@ function createEachProduct(products, productId) {
   return $product
 }
 
-function renderPhotos(products) {
-  for (var i = 0; i < products.length; i++) {
-    var $product = createEachProduct(products[i], i)
-    products.textContent = products[i].id.value
+function renderPhotos(product) {
+  for (var i = 0; i < product.length; i++) {
+    var $product = createEachProduct(product[i], i)
     $artworkSection.appendChild($product)
   }
 }
 
-var $artDetailPage = document.querySelector('.artwork-detail-page')
-
 function renderArtwork(artwork) {
-  // create span containing image
   var $printContainer = document.createElement('span')
   var $print = document.createElement('img')
   $printContainer.setAttribute('class', 'product-detail ')
   $print.setAttribute('src', artwork.image)
   $printContainer.appendChild($print)
-
   var $productDetailsContainer = document.createElement('span')
   $productDetailsContainer.setAttribute('class', 'product-details-container ')
   var $titleContainer = document.createElement('span')
@@ -208,16 +224,9 @@ function renderArtwork(artwork) {
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.medium))
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.large))
   $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
-
   $artDetailPage.appendChild($printContainer)
   $artDetailPage.appendChild($productDetailsContainer)
   return $artDetailPage
-}
-
-function renderDetails(products) {
-  for (var i = 0; i < products.length; i++) {
-    renderArtwork(products[i])
-  }
 }
 
 function createArtDetail(className, detail) {
@@ -229,26 +238,14 @@ function createArtDetail(className, detail) {
 
 function matching(event) {
   var $id = event.target.getAttribute('data-id')
-  findAndRenderArt($id)
-}
-
-function findAndRenderArt(productId) {
   var matches = []
   for (var i = 0; i < products.length; i++) {
-    if (products[i].id === parseInt(productId)) {
+    if (products[i].id === parseInt($id)) {
       matches.push(products[i])
       $artworkSection.classList.add('hidden')
       $siteDescription.classList.add('hidden')
       $artDetailPage.classList.remove('hidden')
-      renderDetails(matches)
+      renderArtwork(products[i])
     }
-  }
-}
-
-function addEventsToArtwork(elements) {
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].addEventListener('click', function () {
-      matching(event)
-    })
   }
 }
