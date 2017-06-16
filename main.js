@@ -108,6 +108,42 @@ var products = [
     },
     price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
     id: 8
+  },
+  {
+    image: 'images/valiant.jpg',
+    title: 'Valiant Vocalist',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 9
+  },
+  {
+    image: 'images/energetic.jpg',
+    title: 'Energetic Enigma',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 10
+  },
+  {
+    image: 'images/curiosity.jpg',
+    title: 'Capricious Curiosity',
+    description: 'This original signed photograph is professionally printed at a lab on archival photography paper.',
+    size:
+    { small: 'Small: 8x8 inches Unframed Print (approx 20.3cm sq.)',
+      medium: 'Medium: 10x10 inches Unframed Print (approx 25.4cm sq.)',
+      large: 'Large: 12x12 inches Unframed Print (approx 30.4cm sq.)'
+    },
+    price: 'Small: $16.99 | Medium: $19.99 | Large: $22.99',
+    id: 11
   }
 ]
 
