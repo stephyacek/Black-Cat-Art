@@ -114,10 +114,14 @@ var products = [
 var $siteDescription = document.querySelector('.site-description')
 var $artworkSection = document.querySelector('.artwork')
 var $product = document.getElementsByClassName('product')
+var $image = document.getElementsByClassName('artwork-image')
+var $productDescription = document.getElementsByClassName('product-description')
 var $back = document.querySelector('.back')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderPhotos(products)
+  addEventsToArtwork($image)
+  addEventsToArtwork($productDescription)
 })
 
 function createEachProduct(products, productId) {
@@ -126,8 +130,11 @@ function createEachProduct(products, productId) {
   var $image = document.createElement('img')
   $productDescription.setAttribute('class', 'product-description')
   $image.setAttribute('src', products.image)
+  $image.setAttribute('class', 'artwork-image')
   $product.setAttribute('class', 'product')
   $product.setAttribute('data-id', productId)
+  $image.setAttribute('data-id', productId)
+  $productDescription.setAttribute('data-id', productId)
   $product.appendChild($image)
   $product.appendChild($productDescription)
   $productDescription.textContent = products.title
@@ -172,11 +179,13 @@ function renderArtwork(artwork) {
   $artDetailPage.appendChild($productDetailsContainer)
   return $artDetailPage
 }
-// function renderDetails(products) {
-//  for (var i = 0; i < products.length; i++) {
-//    renderArtwork(products[i])
-//  }
-// }
+
+function renderDetails(products) {
+  for (var i = 0; i < products.length; i++) {
+    renderArtwork(products[i])
+  }
+}
+
 function createArtDetail(className, detail) {
   var artDetail = document.createElement('span')
   artDetail.setAttribute('class', className)
@@ -184,20 +193,28 @@ function createArtDetail(className, detail) {
   return artDetail
 }
 
-$product.addEventListener('click', function (event) {
+function matching(event) {
   var $id = event.target.getAttribute('data-id')
-  findArt($id)
-  $artworkSection.classList.add('hidden')
-  $siteDescription.classList.add('hidden')
-  $artDetailPage.classList.remove('hidden')
-})
+  findAndRenderArt($id)
+}
 
-function findArt(products, id) {
+function findAndRenderArt(productId) {
+  var matches = []
   for (var i = 0; i < products.length; i++) {
-    if (products[i].id === id) {
-      var matches = []
+    if (products[i].id === parseInt(productId)) {
       matches.push(products[i])
+      $artworkSection.classList.add('hidden')
+      $siteDescription.classList.add('hidden')
+      $artDetailPage.classList.remove('hidden')
+      renderDetails(matches)
     }
-    return renderArtwork(matches)
+  }
+}
+
+function addEventsToArtwork(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', function () {
+      matching(event)
+    })
   }
 }
