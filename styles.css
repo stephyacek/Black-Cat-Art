@@ -112,7 +112,7 @@ footer {
 .product-title-detail h2 {
   padding: 2rem;
   text-align: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #333;
 }
 
 .product-summary-detail {
