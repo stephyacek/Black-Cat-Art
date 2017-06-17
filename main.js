@@ -165,7 +165,6 @@ var $products = document.getElementsByClassName('product')
 var $images = document.getElementsByClassName('artwork-image')
 var $productDescriptions = document.getElementsByClassName('product-description')
 var $artDetailPage = document.querySelector('.artwork-detail-page')
-var $back = document.querySelector('.artwork-detail-page')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderPhotos(products)
@@ -176,7 +175,9 @@ document.addEventListener('DOMContentLoaded', function () {
 function addClickEvent(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', function () {
-      match(event)
+      var id = event.target.getAttribute('data-id')
+      renderProductById(products, id)
+      window.scrollTo(0, 0)
     })
   }
 }
@@ -186,6 +187,7 @@ function createEachProduct(product, productId) {
   var $productDescription = document.createElement('span')
   var $image = document.createElement('img')
   var $back = document.createElement('span')
+
   $productDescription.setAttribute('class', 'product-description')
   $image.setAttribute('src', product.image)
   $image.setAttribute('class', 'artwork-image')
@@ -193,6 +195,7 @@ function createEachProduct(product, productId) {
   $product.setAttribute('data-id', product.id)
   $image.setAttribute('data-id', product.id)
   $productDescription.setAttribute('data-id', product.id)
+
   $product.appendChild($image)
   $product.appendChild($productDescription)
   $productDescription.textContent = product.title
@@ -209,25 +212,31 @@ function renderPhotos(product) {
 function renderArtwork(artwork) {
   var $printContainer = document.createElement('span')
   var $print = document.createElement('img')
-  var $back = document.createElement('span')
-  $printContainer.setAttribute('class', 'product-detail ')
-  $print.setAttribute('src', artwork.image)
-  $back.setAttribute('class', 'back')
-  $back.textContent = 'Back to Gallery'
-  $printContainer.appendChild($print)
   var $productDetailsContainer = document.createElement('span')
-  $productDetailsContainer.setAttribute('class', 'product-details-container ')
   var $titleContainer = document.createElement('span')
   var $title = document.createElement('h2')
+  var $back = document.createElement('span')
+
+  $printContainer.setAttribute('class', 'product-detail')
+  $printContainer.appendChild($print)
+  $print.setAttribute('src', artwork.image)
+
+  $productDetailsContainer.setAttribute('class', 'product-details-container')
   $titleContainer.setAttribute('class', 'product-title-detail')
-  $title.textContent = artwork.title
   $titleContainer.appendChild($title)
+  $title.textContent = artwork.title
+
+  $back.setAttribute('class', 'back')
+  $back.textContent = 'Back to Gallery'
+  $back.addEventListener('click', goBack)
+
   $productDetailsContainer.appendChild($titleContainer)
   $productDetailsContainer.appendChild(createArtDetail('product-summary-detail', artwork.description))
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.small))
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.medium))
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.large))
   $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
+
   $artDetailPage.appendChild($back)
   $artDetailPage.appendChild($printContainer)
   $artDetailPage.appendChild($productDetailsContainer)
@@ -241,23 +250,15 @@ function createArtDetail(className, detail) {
   return artDetail
 }
 
-function match(event) {
-  var $id = event.target.getAttribute('data-id')
-  var matches = []
-  for (var i = 0; i < products.length; i++) {
-    if (products[i].id === parseInt($id)) {
-      matches.push(products[i])
-      $artworkSection.classList.add('hidden')
-      $siteDescription.classList.add('hidden')
-      $artDetailPage.classList.remove('hidden')
-      renderArtwork(products[i])
-    }
+function renderProductById(allProducts, desiredId) {
+  var match = allProducts[parseInt(desiredId)]
+  if (match != null) {
+    $artworkSection.classList.add('hidden')
+    $siteDescription.classList.add('hidden')
+    $artDetailPage.classList.remove('hidden')
+    renderArtwork(match)
   }
 }
-
-$back.addEventListener('click', function () {
-  goBack(event)
-})
 
 function goBack(event) {
   $artworkSection.classList.remove('hidden')
