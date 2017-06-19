@@ -217,6 +217,7 @@ function renderArtwork(artwork) {
   var $title = document.createElement('h2')
   var $detailNavBar = document.createElement('span')
   var $back = document.createElement('span')
+  var $goToCart = document.createElement('img')
 
   $printContainer.setAttribute('class', 'product-detail')
   $printContainer.appendChild($print)
@@ -229,9 +230,12 @@ function renderArtwork(artwork) {
 
   $detailNavBar.setAttribute('class', 'detail-nav-bar')
   $detailNavBar.appendChild($back)
+  $detailNavBar.appendChild($goToCart)
   $back.setAttribute('class', 'back')
   $back.textContent = 'Back to Gallery'
   $back.addEventListener('click', goBack)
+  $goToCart.setAttribute('src', 'cart.png')
+  $goToCart.setAttribute('class', 'cart-glyph')
 
   $productDetailsContainer.appendChild($titleContainer)
   $productDetailsContainer.appendChild(createArtDetail('product-summary-detail', artwork.description))

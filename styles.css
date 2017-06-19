@@ -148,3 +148,13 @@ footer {
   color: #acb6bb;
   cursor: pointer;
 }
+
+.cart-glyph {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+}
+
+.cart-glyph:hover {
+  cursor: pointer;
+}
