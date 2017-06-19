@@ -158,3 +158,30 @@ footer {
 .cart-glyph:hover {
   cursor: pointer;
 }
+
+.dropdown {
+  margin: 0;
+}
+
+#quantity {
+  max-width: 7rem;
+  margin: 1rem;
+  border-width: 0;
+  border-radius: 0.5rem;
+}
+
+.purchase-container {
+  display: inline-block;
+  padding: 1rem;
+}
+
+button {
+  display: flex;
+  width: 22rem;
+  justify-content: center;
+  background-color: #acb6bb;
+  color: #edeff0;
+  border-width: 0;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}

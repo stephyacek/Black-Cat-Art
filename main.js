@@ -243,6 +243,7 @@ function renderArtwork(artwork) {
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.medium))
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.large))
   $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
+  $productDetailsContainer.appendChild(renderPurchaseContainer())
 
   $artDetailPage.appendChild($detailNavBar)
   $artDetailPage.appendChild($printContainer)
@@ -265,6 +266,48 @@ function renderProductById(allProducts, desiredId) {
     $artDetailPage.classList.remove('hidden')
     renderArtwork(match)
   }
+}
+
+function renderPurchaseContainer() {
+  var $purchaseContainer = document.createElement('span')
+  var $dropdown = document.createElement('select')
+  var $chooseSize = document.createElement('option')
+  var $chooseSm = document.createElement('option')
+  var $chooseMd = document.createElement('option')
+  var $chooseLg = document.createElement('option')
+  var $quantity = document.createElement('input')
+  var $addToCart = document.createElement('button')
+
+  $purchaseContainer.setAttribute('class', 'purchase-container')
+  $purchaseContainer.appendChild($dropdown)
+  $purchaseContainer.appendChild($quantity)
+  $purchaseContainer.appendChild($addToCart)
+
+  $dropdown.setAttribute('class', 'dropdown')
+  $dropdown.appendChild($chooseSize)
+  $dropdown.appendChild($chooseSm)
+  $dropdown.appendChild($chooseMd)
+  $dropdown.appendChild($chooseLg)
+
+  $chooseSize.setAttribute('value', '0')
+  $chooseSize.textContent = 'Choose Size'
+  $chooseSm.setAttribute('value', 'small')
+  $chooseSm.textContent = 'Small'
+  $chooseMd.setAttribute('value', 'medium')
+  $chooseMd.textContent = 'Medium'
+  $chooseLg.setAttribute('value', 'large')
+  $chooseLg.textContent = 'Large'
+
+  $quantity.setAttribute('id', 'quantity')
+  $quantity.setAttribute('type', 'number')
+  $quantity.setAttribute('min', 0)
+  $quantity.setAttribute('placeholder', 'Quantity')
+
+  $addToCart.setAttribute('class', 'button')
+  $addToCart.setAttribute('class', 'add-to-cart')
+  $addToCart.textContent = 'Add to Cart'
+
+  return $purchaseContainer
 }
 
 function goBack(event) {
