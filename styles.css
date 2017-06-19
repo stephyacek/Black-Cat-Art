@@ -9,12 +9,12 @@ header {
   font-family: 'Fredericka the Great', sans-serif;
   text-align: center;
   font-size: 8rem;
-  padding: 4rem;
+  padding: 3rem;
   color: #333;
 }
 
 .title-cat {
-  max-width: 4rem;
+  max-width: 5rem;
 }
 
 .site-description {
@@ -67,7 +67,7 @@ header {
 
 footer {
   background-color: #acb6bb;
-  color: #fafafa;
+  color: #edeff0;
   font-weight: 300;
   padding: 5rem;
   text-align: center;
@@ -76,24 +76,26 @@ footer {
 .tel,
 .email {
   text-decoration: none;
-  color: #fafafa;
+  color: #edeff0;
 }
 
 .tel:hover,
 .email:hover {
-  color: #eaeaea;
+  color: #f8f9f9;
   text-decoration: none;
 }
 
 .product-detail img {
   max-width: 50%;
-  margin-left: 5rem;
+  min-width: 40rem;
+  margin: 0% 0 5% 5%;
   display: inline-block;
   padding: 2rem;
 }
 
 .product-details-container {
   max-width: 40%;
+  min-width: 40rem;
   margin: 0;
   display: inline-block;
   padding: 2rem 0 2rem 6rem;
@@ -110,7 +112,6 @@ footer {
 }
 
 .product-title-detail h2 {
-  padding: 2rem;
   text-align: center;
   border-bottom: 1px solid #333;
 }
@@ -130,11 +131,17 @@ footer {
   display: inline-block;
 }
 
+.detail-nav-bar {
+  display: flex;
+}
+
 .back {
   display: flex;
   text-decoration: none;
   color: #49545a;
   max-width: 10rem;
+  text-align: center;
+  margin-right: 87%;
 }
 
 .back:hover {

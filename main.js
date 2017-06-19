@@ -215,6 +215,7 @@ function renderArtwork(artwork) {
   var $productDetailsContainer = document.createElement('span')
   var $titleContainer = document.createElement('span')
   var $title = document.createElement('h2')
+  var $detailNavBar = document.createElement('span')
   var $back = document.createElement('span')
 
   $printContainer.setAttribute('class', 'product-detail')
@@ -226,6 +227,8 @@ function renderArtwork(artwork) {
   $titleContainer.appendChild($title)
   $title.textContent = artwork.title
 
+  $detailNavBar.setAttribute('class', 'detail-nav-bar')
+  $detailNavBar.appendChild($back)
   $back.setAttribute('class', 'back')
   $back.textContent = 'Back to Gallery'
   $back.addEventListener('click', goBack)
@@ -237,7 +240,7 @@ function renderArtwork(artwork) {
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.large))
   $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
 
-  $artDetailPage.appendChild($back)
+  $artDetailPage.appendChild($detailNavBar)
   $artDetailPage.appendChild($printContainer)
   $artDetailPage.appendChild($productDetailsContainer)
   return $artDetailPage
