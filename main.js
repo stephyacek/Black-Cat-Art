@@ -307,6 +307,7 @@ function renderPurchaseContainer() {
   $addToCart.setAttribute('class', 'button')
   $addToCart.setAttribute('class', 'add-to-cart')
   $addToCart.textContent = 'Add to Cart'
+  $addToCart.addEventListener('click', addToCart)
 
   return $purchaseContainer
 }
@@ -315,6 +316,16 @@ function addIdToCart(identifier) {
   var $addToCart = document.querySelector('.add-to-cart')
   $addToCart.setAttribute('data-id', identifier)
   return $addToCart
+}
+
+var cartContents = []
+
+function addToCart(event) {
+  var size = document.querySelector('.dropdown')
+  var quantity = document.querySelector('#quantity')
+  var print = document.querySelector('.add-to-cart')
+  cartContents.push(size.value, quantity.value, print.dataset.id)
+  return window.alert('Added to Cart!')
 }
 
 function goBack(event) {
