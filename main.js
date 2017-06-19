@@ -265,6 +265,7 @@ function renderProductById(allProducts, desiredId) {
     $siteDescription.classList.add('hidden')
     $artDetailPage.classList.remove('hidden')
     renderArtwork(match)
+    addIdToCart(match.id)
   }
 }
 
@@ -308,6 +309,12 @@ function renderPurchaseContainer() {
   $addToCart.textContent = 'Add to Cart'
 
   return $purchaseContainer
+}
+
+function addIdToCart(identifier) {
+  var $addToCart = document.querySelector('.add-to-cart')
+  $addToCart.setAttribute('data-id', identifier)
+  return $addToCart
 }
 
 function goBack(event) {
