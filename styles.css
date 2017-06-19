@@ -2,21 +2,23 @@ body {
   background-color: #d7dcde;
   font-family: 'Spectral', serif;
   margin: 0;
+  color: #49545a;
 }
 
 header {
   font-family: 'Fredericka the Great', sans-serif;
   text-align: center;
-  font-size: 6rem;
+  font-size: 8rem;
   padding: 3rem;
+  color: #333;
 }
 
 .title-cat {
-  max-width: 3rem;
+  max-width: 5rem;
 }
 
 .site-description {
-  padding: 1.5rem;
+  padding: 3rem;
   background-color: #e4e8ea;
   text-align: center;
 }
@@ -32,21 +34,25 @@ header {
 }
 
 .artwork img {
-  max-height: 300px;
   padding: 2rem;
-  height: 300px;
-  width: 300px;
+  height: 100%;
+  width: 100%;
 }
 
 .product {
   padding: 1rem;
-  max-width: 400px;
+  max-width: 30%;
   display: inline-block;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid #aaa;
   border-radius: 1rem;
-  margin: 40px;
+  margin: 2rem;
   background-color: #e4e8ea;
+  box-shadow: #777 2px 0 7px;
+}
+
+.product:hover {
+  cursor: pointer;
 }
 
 .product-description {
@@ -55,9 +61,13 @@ header {
   padding: 1rem;
 }
 
+.product-description:hover {
+  color: #acb6bb;
+}
+
 footer {
   background-color: #acb6bb;
-  color: white;
+  color: #edeff0;
   font-weight: 300;
   padding: 5rem;
   text-align: center;
@@ -66,10 +76,75 @@ footer {
 .tel,
 .email {
   text-decoration: none;
-  color: white;
+  color: #edeff0;
 }
 
 .tel:hover,
 .email:hover {
-  color: #eaeaea;
+  color: #f8f9f9;
+  text-decoration: none;
+}
+
+.product-detail img {
+  max-width: 50%;
+  min-width: 40rem;
+  margin: 0% 0 5% 5%;
+  display: inline-block;
+}
+
+.product-details-container {
+  max-width: 40%;
+  min-width: 40rem;
+  margin: 0;
+  display: inline-block;
+  padding: 2rem 0 2rem 6rem;
+  text-align: center;
+}
+
+.artwork-detail-page {
+  margin: 4rem;
+  padding: 2rem;
+  border: 1px solid #aaa;
+  border-radius: 1rem;
+  background-color: #e4e8ea;
+  box-shadow: #777 2px 0 7px;
+}
+
+.product-title-detail h2 {
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.product-summary-detail {
+  padding: 1rem;
+  display: inline-block;
+}
+
+.product-size-detail {
+  padding: 1rem;
+  display: inline-block;
+}
+
+.product-price-detail {
+  padding: 1rem;
+  display: inline-block;
+}
+
+.detail-nav-bar {
+  display: flex;
+  padding: 1rem;
+}
+
+.back {
+  display: flex;
+  text-decoration: none;
+  color: #49545a;
+  max-width: 10rem;
+  text-align: center;
+  margin-right: 87%;
+}
+
+.back:hover {
+  color: #acb6bb;
+  cursor: pointer;
 }
