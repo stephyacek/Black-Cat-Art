@@ -90,7 +90,6 @@ footer {
   min-width: 40rem;
   margin: 0% 0 5% 5%;
   display: inline-block;
-  padding: 2rem;
 }
 
 .product-details-container {
@@ -133,6 +132,7 @@ footer {
 
 .detail-nav-bar {
   display: flex;
+  padding: 1rem;
 }
 
 .back {
