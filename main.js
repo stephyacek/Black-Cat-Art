@@ -160,6 +160,7 @@ var products = [
 ]
 
 var $siteDescription = document.querySelector('.site-description')
+var $cartNav = document.querySelector('.cart-nav')
 var $artworkSection = document.querySelector('.artwork')
 var $products = document.getElementsByClassName('product')
 var $images = document.getElementsByClassName('artwork-image')
@@ -167,6 +168,7 @@ var $productDescriptions = document.getElementsByClassName('product-description'
 var $artDetailPage = document.querySelector('.artwork-detail-page')
 
 document.addEventListener('DOMContentLoaded', function () {
+  renderCartNav()
   renderPhotos(products)
   addClickEvent($images)
   addClickEvent($productDescriptions)
@@ -186,20 +188,37 @@ function createEachProduct(product, productId) {
   var $product = document.createElement('span')
   var $productDescription = document.createElement('span')
   var $image = document.createElement('img')
-  var $back = document.createElement('span')
+  var $goToCart = document.createElement('span')
 
   $productDescription.setAttribute('class', 'product-description')
+  $productDescription.setAttribute('data-id', product.id)
+  $productDescription.textContent = product.title
+
   $image.setAttribute('src', product.image)
   $image.setAttribute('class', 'artwork-image')
+  $image.setAttribute('data-id', product.id)
+
   $product.setAttribute('class', 'product')
   $product.setAttribute('data-id', product.id)
-  $image.setAttribute('data-id', product.id)
-  $productDescription.setAttribute('data-id', product.id)
-
   $product.appendChild($image)
   $product.appendChild($productDescription)
-  $productDescription.textContent = product.title
+
   return $product
+}
+
+function renderCartNav() {
+  var $goToCart = document.createElement('img')
+  var $numberInCart = document.createElement('span')
+
+  $numberInCart.setAttribute('class', 'number-in-cart')
+  $numberInCart.textContent = getTotalQuantities(cartContents)
+  $goToCart.setAttribute('src', 'cart.png')
+  $goToCart.setAttribute('class', 'cart-glyph')
+
+  $cartNav.appendChild($goToCart)
+  $cartNav.appendChild($numberInCart)
+
+  return $goToCart
 }
 
 function renderPhotos(product) {
@@ -217,30 +236,22 @@ function renderArtwork(artwork) {
   var $title = document.createElement('h2')
   var $detailNavBar = document.createElement('span')
   var $back = document.createElement('span')
-  var $goToCart = document.createElement('img')
-  var $numberInCart = document.createElement('span')
 
   $printContainer.setAttribute('class', 'product-detail')
   $printContainer.appendChild($print)
   $print.setAttribute('src', artwork.image)
 
-  $productDetailsContainer.setAttribute('class', 'product-details-container')
   $titleContainer.setAttribute('class', 'product-title-detail')
   $titleContainer.appendChild($title)
   $title.textContent = artwork.title
 
   $detailNavBar.setAttribute('class', 'detail-nav-bar')
   $detailNavBar.appendChild($back)
-  $detailNavBar.appendChild($goToCart)
-  $detailNavBar.appendChild($numberInCart)
   $back.setAttribute('class', 'back')
   $back.textContent = 'Back to Gallery'
   $back.addEventListener('click', goBack)
-  $numberInCart.setAttribute('class', 'number-in-cart')
-  $numberInCart.textContent = getTotalQuantities(cartContents)
-  $goToCart.setAttribute('src', 'cart.png')
-  $goToCart.setAttribute('class', 'cart-glyph')
 
+  $productDetailsContainer.setAttribute('class', 'product-details-container')
   $productDetailsContainer.appendChild($titleContainer)
   $productDetailsContainer.appendChild(createArtDetail('product-summary-detail', artwork.description))
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.small))
@@ -296,11 +307,11 @@ function renderPurchaseContainer() {
 
   $chooseSize.setAttribute('value', '0')
   $chooseSize.textContent = 'Choose Size'
-  $chooseSm.setAttribute('value', 'small')
+  $chooseSm.setAttribute('value', 16.99)
   $chooseSm.textContent = 'Small'
-  $chooseMd.setAttribute('value', 'medium')
+  $chooseMd.setAttribute('value', 19.99)
   $chooseMd.textContent = 'Medium'
-  $chooseLg.setAttribute('value', 'large')
+  $chooseLg.setAttribute('value', 22.99)
   $chooseLg.textContent = 'Large'
 
   $quantity.setAttribute('id', 'quantity')
@@ -336,7 +347,8 @@ function addToCart(event) {
   }
   cartContents.push(cartItem)
   numberInCart.textContent = getTotalQuantities(cartContents)
-  return window.alert('Added to Cart!')
+  quantity.value = ''
+  size.value = 0
 }
 
 function goBack(event) {
@@ -346,10 +358,10 @@ function goBack(event) {
   $artDetailPage.innerHTML = ''
 }
 
-function getTotalQuantities(quantityArray) {
+function getTotalQuantities(cart) {
   var total = 0
-  for (var i = 0; i < quantityArray.length; i++) {
-    total += Number(quantityArray[i].quantity)
+  for (var i = 0; i < cart.length; i++) {
+    total += Number(cart[i].quantity)
   }
   return total
 }

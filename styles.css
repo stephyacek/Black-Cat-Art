@@ -29,7 +29,7 @@ header {
 
 .artwork {
   margin: 1rem;
-  padding: 2rem;
+  padding: 1rem 6rem 1rem 1rem;
   text-align: center;
 }
 
@@ -102,8 +102,8 @@ footer {
 }
 
 .artwork-detail-page {
-  margin: 4rem;
-  padding: 2rem;
+  margin: 1rem;
+  padding: 1rem;
   border: 1px solid #aaa;
   border-radius: 1rem;
   background-color: #e4e8ea;
@@ -139,9 +139,8 @@ footer {
   display: flex;
   text-decoration: none;
   color: #49545a;
-  max-width: 10rem;
   text-align: center;
-  margin-right: 87%;
+  font-size: 1.5rem;
 }
 
 .back:hover {
@@ -150,7 +149,7 @@ footer {
 }
 
 .cart-glyph {
-  display: flex;
+  display: fixed;
   width: 3rem;
   height: 3rem;
 }
@@ -188,4 +187,12 @@ button {
 
 .number-in-cart {
   color: #76878e;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.cart-nav {
+  position: fixed;
+  top: 12rem;
+  right: 2rem;
 }
