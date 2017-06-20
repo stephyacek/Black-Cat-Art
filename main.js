@@ -345,10 +345,12 @@ function addToCart(event) {
     size: size.value,
     quantity: quantity.value
   }
-  cartContents.push(cartItem)
-  numberInCart.textContent = getTotalQuantities(cartContents)
-  quantity.value = ''
-  size.value = 0
+  if (Number(size.value) !== 0 && quantity.value > 0 && quantity.value !== '') {
+    cartContents.push(cartItem)
+    numberInCart.textContent = getTotalQuantities(cartContents)
+    quantity.value = ''
+    size.value = 0
+  }
 }
 
 function goBack(event) {
