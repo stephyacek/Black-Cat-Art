@@ -218,6 +218,7 @@ function renderArtwork(artwork) {
   var $detailNavBar = document.createElement('span')
   var $back = document.createElement('span')
   var $goToCart = document.createElement('img')
+  var $numberInCart = document.createElement('span')
 
   $printContainer.setAttribute('class', 'product-detail')
   $printContainer.appendChild($print)
@@ -231,9 +232,12 @@ function renderArtwork(artwork) {
   $detailNavBar.setAttribute('class', 'detail-nav-bar')
   $detailNavBar.appendChild($back)
   $detailNavBar.appendChild($goToCart)
+  $detailNavBar.appendChild($numberInCart)
   $back.setAttribute('class', 'back')
   $back.textContent = 'Back to Gallery'
   $back.addEventListener('click', goBack)
+  $numberInCart.setAttribute('class', 'number-in-cart')
+  $numberInCart.textContent = getTotalQuantities(cartContents)
   $goToCart.setAttribute('src', 'cart.png')
   $goToCart.setAttribute('class', 'cart-glyph')
 
@@ -324,7 +328,14 @@ function addToCart(event) {
   var size = document.querySelector('.dropdown')
   var quantity = document.querySelector('#quantity')
   var print = document.querySelector('.add-to-cart')
-  cartContents.push(size.value, quantity.value, print.dataset.id)
+  var numberInCart = document.querySelector('.number-in-cart')
+  var cartItem = {
+    id: print.dataset.id,
+    size: size.value,
+    quantity: quantity.value
+  }
+  cartContents.push(cartItem)
+  numberInCart.textContent = getTotalQuantities(cartContents)
   return window.alert('Added to Cart!')
 }
 
@@ -333,4 +344,12 @@ function goBack(event) {
   $siteDescription.classList.remove('hidden')
   $artDetailPage.classList.add('hidden')
   $artDetailPage.innerHTML = ''
+}
+
+function getTotalQuantities(quantityArray) {
+  var total = 0
+  for (var i = 0; i < quantityArray.length; i++) {
+    total += Number(quantityArray[i].quantity)
+  }
+  return total
 }
