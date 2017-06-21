@@ -29,7 +29,7 @@ header {
 
 .artwork {
   margin: 1rem;
-  padding: 2rem;
+  padding: 1rem 6rem 1rem 1rem;
   text-align: center;
 }
 
@@ -101,9 +101,10 @@ footer {
   text-align: center;
 }
 
+.my-cart,
 .artwork-detail-page {
-  margin: 4rem;
-  padding: 2rem;
+  margin: 1rem;
+  padding: 1rem;
   border: 1px solid #aaa;
   border-radius: 1rem;
   background-color: #e4e8ea;
@@ -139,12 +140,60 @@ footer {
   display: flex;
   text-decoration: none;
   color: #49545a;
-  max-width: 10rem;
   text-align: center;
-  margin-right: 87%;
+  font-size: 1.5rem;
 }
 
 .back:hover {
   color: #acb6bb;
   cursor: pointer;
+}
+
+.cart-glyph {
+  display: fixed;
+  width: 3rem;
+  height: 3rem;
+}
+
+.cart-glyph:hover {
+  cursor: pointer;
+}
+
+.dropdown {
+  margin: 0;
+}
+
+#quantity {
+  max-width: 7rem;
+  margin: 1rem;
+  border-width: 0;
+  border-radius: 0.5rem;
+}
+
+.purchase-container {
+  display: inline-block;
+  padding: 1rem;
+}
+
+button {
+  display: flex;
+  width: 22rem;
+  justify-content: center;
+  background-color: #acb6bb;
+  color: #edeff0;
+  border-width: 0;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+
+.number-in-cart {
+  color: #76878e;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.cart-nav {
+  position: fixed;
+  top: 12rem;
+  right: 2rem;
 }
