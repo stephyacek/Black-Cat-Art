@@ -230,16 +230,32 @@ function renderPhotos(product) {
   }
 }
 
+function renderBackButton() {
+  var $detailNavBar = document.createElement('span')
+  var $backArrow = document.createElement('img')
+  var $back = document.createElement('span')
+
+  $detailNavBar.setAttribute('class', 'detail-nav-bar')
+  $detailNavBar.appendChild($backArrow)
+  $detailNavBar.appendChild($back)
+  $backArrow.setAttribute('src', 'images/arrowback.png')
+  $backArrow.setAttribute('class', 'arrow-back')
+  $back.setAttribute('class', 'back')
+  $back.textContent = 'Back to Gallery'
+  $back.addEventListener('click', goBack)
+
+  $artDetailPage.appendChild($detailNavBar)
+}
+
 function renderArtwork(artwork) {
+  var $detailNavBar = document.querySelector('.detail-nav-bar')
   var $printContainer = document.createElement('span')
   var $print = document.createElement('img')
   var $productDetailsContainer = document.createElement('span')
   var $titleContainer = document.createElement('span')
   var $title = document.createElement('h2')
   var $message = document.createElement('span')
-  var $detailNavBar = document.createElement('span')
-  var $backArrow = document.createElement('img')
-  var $back = document.createElement('span')
+  renderBackButton()
 
   $printContainer.setAttribute('class', 'product-detail')
   $printContainer.appendChild($print)
@@ -252,15 +268,6 @@ function renderArtwork(artwork) {
   $message.setAttribute('class', 'alert-message hidden')
   $message.textContent = 'Be sure to choose size and quantity before adding to cart!'
 
-  $detailNavBar.setAttribute('class', 'detail-nav-bar')
-  $detailNavBar.appendChild($backArrow)
-  $detailNavBar.appendChild($back)
-  $backArrow.setAttribute('src', 'images/arrowback.png')
-  $backArrow.setAttribute('class', 'arrow-back')
-  $back.setAttribute('class', 'back')
-  $back.textContent = 'Back to Gallery'
-  $back.addEventListener('click', goBack)
-
   $productDetailsContainer.setAttribute('class', 'product-details-container')
   $productDetailsContainer.appendChild($titleContainer)
   $productDetailsContainer.appendChild(createArtDetail('product-summary-detail', artwork.description))
@@ -271,7 +278,6 @@ function renderArtwork(artwork) {
   $productDetailsContainer.appendChild(renderPurchaseContainer())
   $productDetailsContainer.appendChild($message)
 
-  $artDetailPage.appendChild($detailNavBar)
   $artDetailPage.appendChild($printContainer)
   $artDetailPage.appendChild($productDetailsContainer)
   return $artDetailPage
@@ -393,12 +399,13 @@ function renderMyCartItems(cartItem) {
   $cartDelete.appendChild($cartDeleteItem)
   $cartDelete.appendChild($cartDeleteText)
 
-  $cartRowTotal.textContent = '$' + calculateMultiply(cartItem.price, cartItem.quantity)
+  $cartRowTotal.setAttribute('class', 'row-total')
+  $cartRowTotal.textContent = calculateMultiply(cartItem.price, cartItem.quantity)
   $cartData.appendChild($dataRow)
 }
 
 function renderMyCartTotal() {
-  // var subtotal = $cartRowTotal * objects.length
+  var $cartRowTotal = document.getElementsByClassName('.row-total')
   var $cartCalculation = document.querySelector('.cart-calculation')
   var $cartSubtotal = document.createElement('div')
   var $cartTax = document.createElement('div')
@@ -406,17 +413,15 @@ function renderMyCartTotal() {
   var $buttonToCheckout = document.createElement('button')
 
   $cartSubtotal.setAttribute('class', 'cart-subtotal')
-  /// add calc below in concatination
-  $cartSubtotal.textContent = 'Subtotal: '
+  $cartSubtotal.textContent = 'Subtotal: $'
+  // + addAllNumbers($cartRowTotal.value)
 
   $cartTax.setAttribute('class', 'cart-tax')
-  /// add calc below in concatination
-  $cartTax.textContent = 'Tax (8%): '
+  /// + calculateMultiply($cartSubtotal.value, 0.08)
+  $cartTax.textContent = 'Tax (8%): $'
 
   $cartTotal.setAttribute('class', 'cart-total')
-  /// add calc below in concatination
-  $cartTotal.textContent = 'Total: '
-  // + Number($cartSubtotal.value + $cartTax.value)
+  $cartTotal.textContent = 'Total: $'
 
   $buttonToCheckout.setAttribute('class', 'button button-to-checkout')
   $buttonToCheckout.textContent = 'Checkout'
@@ -432,9 +437,12 @@ function calculateMultiply(price, quantity) {
   return subtotal.toFixed(2)
 }
 
-function calculateSum(subtotals, tax) {
-  var total = Number(subtotals) + Number(tax)
-  return total.toFixed(2)
+function addAllNumbers(list) {
+  var sum = 0
+  list.forEach(function (item) {
+    sum += item
+  })
+  return sum
 }
 
 function addIdToCart(identifier) {
