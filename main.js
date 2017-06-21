@@ -166,6 +166,8 @@ var $products = document.getElementsByClassName('product')
 var $images = document.getElementsByClassName('artwork-image')
 var $productDescriptions = document.getElementsByClassName('product-description')
 var $artDetailPage = document.querySelector('.artwork-detail-page')
+var $myCart = document.querySelector('.my-cart')
+var $tableHeading = document.querySelector('.table-heading')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderCartNav()
@@ -188,7 +190,6 @@ function createEachProduct(product, productId) {
   var $product = document.createElement('span')
   var $productDescription = document.createElement('span')
   var $image = document.createElement('img')
-  var $goToCart = document.createElement('span')
 
   $productDescription.setAttribute('class', 'product-description')
   $productDescription.setAttribute('data-id', product.id)
@@ -214,6 +215,7 @@ function renderCartNav() {
   $numberInCart.textContent = getTotalQuantities(cartContents)
   $goToCart.setAttribute('src', 'cart.png')
   $goToCart.setAttribute('class', 'cart-glyph')
+  $cartNav.addEventListener('click', seeMyCart)
 
   $cartNav.appendChild($goToCart)
   $cartNav.appendChild($numberInCart)
@@ -280,7 +282,7 @@ function renderProductById(allProducts, desiredId) {
     $siteDescription.classList.add('hidden')
     $artDetailPage.classList.remove('hidden')
     renderArtwork(match)
-    addIdToCart(match.id)
+    addIdToCart(match)
   }
 }
 
@@ -327,9 +329,61 @@ function renderPurchaseContainer() {
   return $purchaseContainer
 }
 
+function renderMyCartItems(cartItem) {
+  var $cartData = document.querySelector('.cart-data')
+  var $dataRow = document.createElement('div')
+  var $cartPrint = document.createElement('span')
+  var $cartPhoto = document.createElement('img')
+  var $cartTitle = document.createElement('span')
+  var $cartPrice = document.createElement('span')
+  var $cartQuantity = document.createElement('span')
+  var $cartQuantityChange = document.createElement('span')
+  var $cartChangeQuantity = document.createElement('input')
+  var $cartDelete = document.createElement('span')
+  var $cartDeleteItem = document.createElement('input')
+  var $cartRowTotal = document.createElement('span')
+  var productInfo = getProductInfo(cartItem.id)
+
+  $dataRow.setAttribute('class', 'data')
+  $dataRow.appendChild($cartPrint)
+  $dataRow.appendChild($cartTitle)
+  $dataRow.appendChild($cartPrice)
+  $dataRow.appendChild($cartQuantity)
+  $dataRow.appendChild($cartQuantityChange)
+  $dataRow.appendChild($cartDelete)
+  $dataRow.appendChild($cartRowTotal)
+
+  $cartPrint.setAttribute('class', 'cart-print')
+  $cartPrint.appendChild($cartPhoto)
+  $cartPhoto.setAttribute('src', productInfo.image)
+  $cartTitle.textContent = productInfo.title
+
+  $cartPrice.textContent = cartItem.price
+
+  $cartQuantity.textContent = cartItem.quantity
+
+  $cartChangeQuantity.setAttribute('class', 'change-quantity')
+  $cartChangeQuantity.setAttribute('type', 'number')
+  $cartChangeQuantity.setAttribute('min', 0)
+  $cartChangeQuantity.setAttribute('max', 99)
+  $cartQuantityChange.appendChild($cartChangeQuantity)
+
+  $cartDeleteItem.setAttribute('type', 'checkbox')
+  $cartDeleteItem.setAttribute('class', 'delete-item')
+  $cartDelete.appendChild($cartDeleteItem)
+
+  $cartRowTotal.textContent = calculateRow(cartItem.price, cartItem.quantity)
+  $cartData.appendChild($dataRow)
+}
+
+function calculateRow(price, quantity) {
+  var subtotal = Number(price) * Number(quantity)
+  return subtotal
+}
+
 function addIdToCart(identifier) {
   var $addToCart = document.querySelector('.add-to-cart')
-  $addToCart.setAttribute('data-id', identifier)
+  $addToCart.setAttribute('data-id', identifier.id)
   return $addToCart
 }
 
@@ -342,7 +396,7 @@ function addToCart(event) {
   var numberInCart = document.querySelector('.number-in-cart')
   var cartItem = {
     id: print.dataset.id,
-    size: size.value,
+    price: size.value,
     quantity: quantity.value
   }
   if (Number(size.value) !== 0 && quantity.value > 0 && quantity.value !== '') {
@@ -351,6 +405,17 @@ function addToCart(event) {
     quantity.value = ''
     size.value = 0
   }
+}
+
+function seeMyCart(event) {
+  $artworkSection.classList.add('hidden')
+  $siteDescription.classList.add('hidden')
+  $artDetailPage.classList.add('hidden')
+  $artDetailPage.innerHTML = ''
+  $myCart.classList.remove('hidden')
+  cartContents.forEach(function (item) {
+    renderMyCartItems(item)
+  })
 }
 
 function goBack(event) {
@@ -366,4 +431,10 @@ function getTotalQuantities(cart) {
     total += Number(cart[i].quantity)
   }
   return total
+}
+
+function getProductInfo(productId) {
+  if (productId >= 0) {
+    return products[productId]
+  }
 }

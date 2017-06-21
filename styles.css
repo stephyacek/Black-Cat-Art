@@ -197,3 +197,62 @@ button {
   top: 12rem;
   right: 2rem;
 }
+
+.cart-headings {
+  padding: 2rem;
+  text-align: center;
+}
+
+.my-cart h2 {
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.cart-headings span {
+  text-align: center;
+  padding: 0 6rem 1rem;
+}
+
+.data {
+  padding-top: 2rem;
+  align-content: center;
+}
+
+.data span {
+  margin: 5%;
+  text-align: left;
+}
+
+.go-to-checkout,
+.update-quantity {
+  max-width: 9rem;
+  padding: 0.5rem;
+  display: inline-block;
+  margin-left: 85%;
+}
+
+.cart-data {
+  text-align: center;
+}
+
+.my-cart-totals {
+  text-align: right;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.cart-subtotal,
+.cart-taxes,
+.cart-total {
+  padding: 1rem;
+}
+
+.cart-total {
+  font-weight: 600;
+}
+
+.cart-print img {
+  padding: 0;
+  max-width: 8rem;
+}
