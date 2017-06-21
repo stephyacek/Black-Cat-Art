@@ -138,15 +138,22 @@ footer {
 
 .back {
   display: flex;
-  text-decoration: none;
   color: #49545a;
   text-align: center;
   font-size: 1.5rem;
+  padding: 1rem 1rem 3rem 0;
+  text-decoration-line: underline;
 }
 
 .back:hover {
   color: #acb6bb;
   cursor: pointer;
+}
+
+.arrow-back {
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
 }
 
 .cart-glyph {
@@ -198,20 +205,39 @@ button {
   right: 2rem;
 }
 
-.cart-headings {
-  padding: 2rem;
+.alert-message {
+  font-weight: 600;
   text-align: center;
+  display: inline-flex;
+}
+
+.cart-headings {
+  position: relative;
+}
+
+.price-header,
+.quantity-header,
+.subtotal-header {
+  position: absolute;
+}
+
+.price-header {
+  margin-left: 43rem;
+}
+
+.quantity-header {
+  margin-left: 54rem;
+}
+
+.subtotal-header {
+  display: inline-block;
+  margin-left: 105rem;
 }
 
 .my-cart h2 {
   padding: 2rem;
   text-align: center;
   border-bottom: 1px solid #333;
-}
-
-.cart-headings span {
-  text-align: center;
-  padding: 0 6rem 1rem;
 }
 
 .data {

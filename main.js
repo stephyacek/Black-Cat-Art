@@ -236,7 +236,9 @@ function renderArtwork(artwork) {
   var $productDetailsContainer = document.createElement('span')
   var $titleContainer = document.createElement('span')
   var $title = document.createElement('h2')
+  var $message = document.createElement('span')
   var $detailNavBar = document.createElement('span')
+  var $backArrow = document.createElement('img')
   var $back = document.createElement('span')
 
   $printContainer.setAttribute('class', 'product-detail')
@@ -247,8 +249,14 @@ function renderArtwork(artwork) {
   $titleContainer.appendChild($title)
   $title.textContent = artwork.title
 
+  $message.setAttribute('class', 'alert-message hidden')
+  $message.textContent = 'Be sure to choose size and quantity before adding to cart!'
+
   $detailNavBar.setAttribute('class', 'detail-nav-bar')
+  $detailNavBar.appendChild($backArrow)
   $detailNavBar.appendChild($back)
+  $backArrow.setAttribute('src', 'images/arrowback.png')
+  $backArrow.setAttribute('class', 'arrow-back')
   $back.setAttribute('class', 'back')
   $back.textContent = 'Back to Gallery'
   $back.addEventListener('click', goBack)
@@ -261,6 +269,7 @@ function renderArtwork(artwork) {
   $productDetailsContainer.appendChild(createArtDetail('product-size-detail', artwork.size.large))
   $productDetailsContainer.appendChild(createArtDetail('product-price-detail', artwork.price))
   $productDetailsContainer.appendChild(renderPurchaseContainer())
+  $productDetailsContainer.appendChild($message)
 
   $artDetailPage.appendChild($detailNavBar)
   $artDetailPage.appendChild($printContainer)
@@ -387,7 +396,7 @@ function renderMyCartItems(cartItem) {
 
 function calculateRow(price, quantity) {
   var subtotal = Number(price) * Number(quantity)
-  return subtotal
+  return subtotal.toFixed(2)
 }
 
 function addIdToCart(identifier) {
@@ -403,16 +412,21 @@ function addToCart(event) {
   var quantity = document.querySelector('#quantity')
   var print = document.querySelector('.add-to-cart')
   var numberInCart = document.querySelector('.number-in-cart')
+  var message = document.querySelector('.alert-message')
   var cartItem = {
     id: print.dataset.id,
     price: size.value,
     quantity: quantity.value
   }
   if (Number(size.value) !== 0 && quantity.value > 0 && quantity.value !== '') {
+    message.classList.add('hidden')
     cartContents.push(cartItem)
     numberInCart.textContent = getTotalQuantities(cartContents)
     quantity.value = ''
     size.value = 0
+  }
+  else {
+    message.classList.remove('hidden')
   }
 }
 
