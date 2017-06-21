@@ -339,8 +339,10 @@ function renderMyCartItems(cartItem) {
   var $cartQuantity = document.createElement('span')
   var $cartQuantityChange = document.createElement('span')
   var $cartChangeQuantity = document.createElement('input')
+  var $cartQuantityButton = document.createElement('button')
   var $cartDelete = document.createElement('span')
-  var $cartDeleteItem = document.createElement('input')
+  var $cartDeleteItem = document.createElement('img')
+  var $cartDeleteText = document.createElement('span')
   var $cartRowTotal = document.createElement('span')
   var productInfo = getProductInfo(cartItem.id)
 
@@ -358,7 +360,7 @@ function renderMyCartItems(cartItem) {
   $cartPhoto.setAttribute('src', productInfo.image)
   $cartTitle.textContent = productInfo.title
 
-  $cartPrice.textContent = cartItem.price
+  $cartPrice.textContent = '$' + cartItem.price
 
   $cartQuantity.textContent = cartItem.quantity
 
@@ -366,13 +368,20 @@ function renderMyCartItems(cartItem) {
   $cartChangeQuantity.setAttribute('type', 'number')
   $cartChangeQuantity.setAttribute('min', 0)
   $cartChangeQuantity.setAttribute('max', 99)
+  $cartQuantityButton.setAttribute('class', 'button')
+  $cartQuantityButton.setAttribute('class', 'cart-update')
+  $cartQuantityButton.textContent = 'Update'
   $cartQuantityChange.appendChild($cartChangeQuantity)
+  $cartQuantityChange.appendChild($cartQuantityButton)
 
-  $cartDeleteItem.setAttribute('type', 'checkbox')
+  $cartDeleteItem.setAttribute('src', 'images/delete.png')
   $cartDeleteItem.setAttribute('class', 'delete-item')
+  $cartDeleteText.setAttribute('class', 'delete-text')
+  $cartDeleteText.textContent = 'Delete'
   $cartDelete.appendChild($cartDeleteItem)
+  $cartDelete.appendChild($cartDeleteText)
 
-  $cartRowTotal.textContent = calculateRow(cartItem.price, cartItem.quantity)
+  $cartRowTotal.textContent = '$' + calculateRow(cartItem.price, cartItem.quantity)
   $cartData.appendChild($dataRow)
 }
 

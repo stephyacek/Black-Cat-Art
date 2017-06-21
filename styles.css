@@ -219,11 +219,6 @@ button {
   align-content: center;
 }
 
-.data span {
-  margin: 5%;
-  text-align: left;
-}
-
 .go-to-checkout,
 .update-quantity {
   max-width: 9rem;
@@ -232,8 +227,9 @@ button {
   margin-left: 85%;
 }
 
-.cart-data {
+.cart-data span {
   text-align: center;
+  padding: 0 5rem;
 }
 
 .my-cart-totals {
@@ -255,4 +251,18 @@ button {
 .cart-print img {
   padding: 0;
   max-width: 8rem;
+}
+
+.delete-item {
+  width: 1rem;
+}
+
+.cart-update {
+  width: 6rem;
+  display: inline-block;
+  text-align: center;
+}
+
+span .delete-text {
+  padding: 0.5rem;
 }
