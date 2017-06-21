@@ -367,6 +367,8 @@ function renderMyCartItems(cartItem) {
   $cartPrint.setAttribute('class', 'cart-print')
   $cartPrint.appendChild($cartPhoto)
   $cartPhoto.setAttribute('src', productInfo.image)
+
+  $cartTitle.setAttribute('class', 'cart-title')
   $cartTitle.textContent = productInfo.title
 
   $cartPrice.textContent = '$' + cartItem.price
@@ -391,13 +393,48 @@ function renderMyCartItems(cartItem) {
   $cartDelete.appendChild($cartDeleteItem)
   $cartDelete.appendChild($cartDeleteText)
 
-  $cartRowTotal.textContent = '$' + calculateRow(cartItem.price, cartItem.quantity)
+  $cartRowTotal.textContent = '$' + calculateMultiply(cartItem.price, cartItem.quantity)
   $cartData.appendChild($dataRow)
 }
 
-function calculateRow(price, quantity) {
+function renderMyCartTotal() {
+  // var subtotal = $cartRowTotal * objects.length
+  var $cartCalculation = document.querySelector('.cart-calculation')
+  var $cartSubtotal = document.createElement('div')
+  var $cartTax = document.createElement('div')
+  var $cartTotal = document.createElement('div')
+  var $buttonToCheckout = document.createElement('button')
+
+  $cartSubtotal.setAttribute('class', 'cart-subtotal')
+  /// add calc below in concatination
+  $cartSubtotal.textContent = 'Subtotal: '
+
+  $cartTax.setAttribute('class', 'cart-tax')
+  /// add calc below in concatination
+  $cartTax.textContent = 'Tax (8%): '
+
+  $cartTotal.setAttribute('class', 'cart-total')
+  /// add calc below in concatination
+  $cartTotal.textContent = 'Total: '
+  // + Number($cartSubtotal.value + $cartTax.value)
+
+  $buttonToCheckout.setAttribute('class', 'button button-to-checkout')
+  $buttonToCheckout.textContent = 'Checkout'
+
+  $cartCalculation.appendChild($cartSubtotal)
+  $cartCalculation.appendChild($cartTax)
+  $cartCalculation.appendChild($cartTotal)
+  $cartCalculation.appendChild($buttonToCheckout)
+}
+
+function calculateMultiply(price, quantity) {
   var subtotal = Number(price) * Number(quantity)
   return subtotal.toFixed(2)
+}
+
+function calculateSum(subtotals, tax) {
+  var total = Number(subtotals) + Number(tax)
+  return total.toFixed(2)
 }
 
 function addIdToCart(identifier) {
@@ -442,6 +479,7 @@ function seeMyCart(event) {
   cartContents.forEach(function (item) {
     renderMyCartItems(item)
   })
+  renderMyCartTotal()
 }
 
 function goBack(event) {

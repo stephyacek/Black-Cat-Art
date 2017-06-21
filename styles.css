@@ -79,10 +79,8 @@ footer {
   color: #edeff0;
 }
 
-.delete-section:hover,
 .tel:hover,
 .email:hover {
-  cursor: pointer;
   color: #f8f9f9;
   text-decoration: none;
 }
@@ -147,6 +145,7 @@ footer {
   text-decoration-line: underline;
 }
 
+.delete-section:hover,
 .back:hover {
   color: #acb6bb;
   cursor: pointer;
@@ -221,19 +220,20 @@ button {
 .quantity-header,
 .subtotal-header {
   position: absolute;
+  font-weight: 600;
 }
 
 .price-header {
-  margin-left: 43rem;
+  margin-left: 53rem;
 }
 
 .quantity-header {
-  margin-left: 54rem;
+  margin-left: 64rem;
 }
 
 .subtotal-header {
   display: inline-block;
-  margin-left: 105rem;
+  margin-left: 115rem;
 }
 
 .my-cart h2 {
@@ -247,12 +247,11 @@ button {
   align-content: center;
 }
 
-.go-to-checkout,
-.update-quantity {
-  max-width: 9rem;
-  padding: 0.5rem;
+.button-to-checkout {
+  max-width: 12rem;
+  padding: 1rem;
   display: inline-block;
-  margin-left: 85%;
+  margin-left: 95%;
 }
 
 .cart-data span {
@@ -260,14 +259,19 @@ button {
   padding: 0 5rem;
 }
 
-.my-cart-totals {
+.cart-title {
+  width: 30rem;
+  display: inline-block;
+}
+
+.cart-calculation {
   text-align: right;
-  margin-right: 1rem;
+  margin-right: 15rem;
   padding: 1rem;
 }
 
 .cart-subtotal,
-.cart-taxes,
+.cart-tax,
 .cart-total {
   padding: 1rem;
 }
