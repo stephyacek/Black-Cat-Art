@@ -79,8 +79,10 @@ footer {
   color: #edeff0;
 }
 
+.delete-section:hover,
 .tel:hover,
 .email:hover {
+  cursor: pointer;
   color: #f8f9f9;
   text-decoration: none;
 }

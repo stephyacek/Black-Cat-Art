@@ -387,6 +387,7 @@ function renderMyCartItems(cartItem) {
   $cartDeleteItem.setAttribute('class', 'delete-item')
   $cartDeleteText.setAttribute('class', 'delete-text')
   $cartDeleteText.textContent = 'Delete'
+  $cartDelete.setAttribute('class', 'delete-section')
   $cartDelete.appendChild($cartDeleteItem)
   $cartDelete.appendChild($cartDeleteText)
 
@@ -431,6 +432,8 @@ function addToCart(event) {
 }
 
 function seeMyCart(event) {
+  var $cartData = document.querySelector('.cart-data')
+  $cartData.innerHTML = ''
   $artworkSection.classList.add('hidden')
   $siteDescription.classList.add('hidden')
   $artDetailPage.classList.add('hidden')
