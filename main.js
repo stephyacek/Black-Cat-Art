@@ -419,10 +419,10 @@ function renderMyCartTotal() {
 
   $cartTax.setAttribute('class', 'cart-tax')
   /// + calculateMultiply($cartSubtotal.value, 0.08)
-  $cartTax.textContent = 'Tax (8%): $'
+  $cartTax.textContent = 'Tax (8%): $' + (calculateSum('row-total') * 0.08).toFixed(2)
 
   $cartTotal.setAttribute('class', 'cart-total')
-  $cartTotal.textContent = 'Total: $'
+  $cartTotal.textContent = 'Total: $' + (calculateSum('row-total') * 1.08).toFixed(2)
 
   $buttonToCheckout.setAttribute('class', 'button button-to-checkout')
   $buttonToCheckout.textContent = 'Checkout'
@@ -438,12 +438,15 @@ function calculateMultiply(price, quantity) {
   return subtotal.toFixed(2)
 }
 
-function addAllNumbers(list) {
-  var sum = 0
-  list.forEach(function (item) {
-    sum += item
-  })
-  return sum
+function calculateSum(subtotalClass) {
+  var total = 0
+  var subtotals = document.getElementsByClassName(subtotalClass)
+
+  for (var i = 0; i < subtotals.length; i++) {
+    total += Number(subtotals[i].innerHTML)
+  }
+
+  return total.toFixed(2)
 }
 
 function addIdToCart(identifier) {
@@ -552,15 +555,4 @@ function findCartItem(cartItems, productId) {
     }
   }
   return null
-}
-
-function calculateSum(subtotalClass) {
-  var total = 0
-  var subtotals = document.getElementsByClassName(subtotalClass)
-
-  for (var i = 0; i < subtotals.length; i++) {
-    total += Number(subtotals[i].innerHTML)
-  }
-
-  return total
 }
