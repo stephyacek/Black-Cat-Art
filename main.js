@@ -210,13 +210,17 @@ function createEachProduct(product, productId) {
 function renderCartNav() {
   var $goToCart = document.createElement('img')
   var $numberInCart = document.createElement('span')
+  var $emptyCart = document.createElement('span')
 
+  $emptyCart.setAttribute('class', 'hidden empty-cart')
+  $emptyCart.textContent = 'No items in cart!'
   $numberInCart.setAttribute('class', 'number-in-cart')
   $numberInCart.textContent = getTotalQuantities(cartContents)
   $goToCart.setAttribute('src', 'cart.png')
   $goToCart.setAttribute('class', 'cart-glyph')
   $cartNav.addEventListener('click', seeMyCart)
 
+  $cartNav.appendChild($emptyCart)
   $cartNav.appendChild($goToCart)
   $cartNav.appendChild($numberInCart)
 
@@ -230,21 +234,17 @@ function renderPhotos(product) {
   }
 }
 
-function renderBackButton() {
+function renderBackButton(parentElement) {
   var $detailNavBar = document.createElement('span')
-  var $backArrow = document.createElement('img')
   var $back = document.createElement('span')
 
   $detailNavBar.setAttribute('class', 'detail-nav-bar')
-  $detailNavBar.appendChild($backArrow)
   $detailNavBar.appendChild($back)
-  $backArrow.setAttribute('src', 'images/arrowback.png')
-  $backArrow.setAttribute('class', 'arrow-back')
   $back.setAttribute('class', 'back')
   $back.textContent = 'Back to Gallery'
   $back.addEventListener('click', goBack)
 
-  $artDetailPage.appendChild($detailNavBar)
+  parentElement.appendChild($detailNavBar)
 }
 
 function renderArtwork(artwork) {
@@ -255,7 +255,7 @@ function renderArtwork(artwork) {
   var $titleContainer = document.createElement('span')
   var $title = document.createElement('h2')
   var $message = document.createElement('span')
-  renderBackButton()
+  renderBackButton($artDetailPage)
 
   $printContainer.setAttribute('class', 'product-detail')
   $printContainer.appendChild($print)
@@ -265,7 +265,7 @@ function renderArtwork(artwork) {
   $titleContainer.appendChild($title)
   $title.textContent = artwork.title
 
-  $message.setAttribute('class', 'alert-message hidden')
+  $message.setAttribute('class', 'alert-message not-visible')
   $message.textContent = 'Be sure to choose size and quantity before adding to cart!'
 
   $productDetailsContainer.setAttribute('class', 'product-details-container')
@@ -390,6 +390,7 @@ function renderMyCartItems(cartItem) {
   $cartQuantityButton.textContent = 'Update'
   $cartQuantityChange.appendChild($cartChangeQuantity)
   $cartQuantityChange.appendChild($cartQuantityButton)
+  // $cartQuantityButton.addEventListener('click', updateCart)
 
   $cartDeleteItem.setAttribute('src', 'images/delete.png')
   $cartDeleteItem.setAttribute('class', 'delete-item')
@@ -398,6 +399,7 @@ function renderMyCartItems(cartItem) {
   $cartDelete.setAttribute('class', 'delete-section')
   $cartDelete.appendChild($cartDeleteItem)
   $cartDelete.appendChild($cartDeleteText)
+  // $cartDelete.addEventListener('click', deleteRow)
 
   $cartRowTotal.setAttribute('class', 'row-total')
   $cartRowTotal.textContent = calculateMultiply(cartItem.price, cartItem.quantity)
@@ -405,7 +407,6 @@ function renderMyCartItems(cartItem) {
 }
 
 function renderMyCartTotal() {
-  var $cartRowTotal = document.getElementsByClassName('.row-total')
   var $cartCalculation = document.querySelector('.cart-calculation')
   var $cartSubtotal = document.createElement('div')
   var $cartTax = document.createElement('div')
@@ -413,7 +414,7 @@ function renderMyCartTotal() {
   var $buttonToCheckout = document.createElement('button')
 
   $cartSubtotal.setAttribute('class', 'cart-subtotal')
-  $cartSubtotal.textContent = 'Subtotal: $'
+  $cartSubtotal.innerHTML = '<span>Subtotal: $</span>' + calculateSum('row-total')
   // + addAllNumbers($cartRowTotal.value)
 
   $cartTax.setAttribute('class', 'cart-tax')
@@ -459,43 +460,76 @@ function addToCart(event) {
   var print = document.querySelector('.add-to-cart')
   var numberInCart = document.querySelector('.number-in-cart')
   var message = document.querySelector('.alert-message')
+  var emptyCart = document.querySelector('.empty-cart')
   var cartItem = {
     id: print.dataset.id,
     price: size.value,
-    quantity: quantity.value
+    quantity: Number(quantity.value)
   }
   if (Number(size.value) !== 0 && quantity.value > 0 && quantity.value !== '') {
-    message.classList.add('hidden')
-    cartContents.push(cartItem)
+    var itemIndex = findCartItem(cartContents, cartItem.id)
+    if (itemIndex != null && cartContents[itemIndex].price === cartItem.price) {
+      cartContents[itemIndex].quantity += Number(cartItem.quantity)
+    }
+    else {
+      cartContents.push(cartItem)
+    }
+    message.classList.add('not-visible')
+    emptyCart.classList.add('hidden')
     numberInCart.textContent = getTotalQuantities(cartContents)
     quantity.value = ''
     size.value = 0
   }
   else {
-    message.classList.remove('hidden')
+    message.classList.remove('not-visible')
   }
 }
 
 function seeMyCart(event) {
-  var $cartData = document.querySelector('.cart-data')
-  $cartData.innerHTML = ''
-  $artworkSection.classList.add('hidden')
-  $siteDescription.classList.add('hidden')
-  $artDetailPage.classList.add('hidden')
-  $artDetailPage.innerHTML = ''
-  $myCart.classList.remove('hidden')
-  cartContents.forEach(function (item) {
-    renderMyCartItems(item)
-  })
-  renderMyCartTotal()
+  var $emptyCart = document.querySelector('.empty-cart')
+  if (cartContents.length === 0) {
+    $emptyCart.classList.remove('hidden')
+  }
+  else {
+    var $cartData = document.querySelector('.cart-data')
+    $cartData.innerHTML = ''
+    $artworkSection.classList.add('hidden')
+    $siteDescription.classList.add('hidden')
+    $artDetailPage.classList.add('hidden')
+    $artDetailPage.innerHTML = ''
+    $myCart.classList.remove('hidden')
+    renderBackButton($myCart)
+    cartContents.forEach(function (item) {
+      renderMyCartItems(item)
+    })
+    renderMyCartTotal()
+  }
+  window.scrollTo(0, 0)
 }
 
 function goBack(event) {
   $artworkSection.classList.remove('hidden')
   $siteDescription.classList.remove('hidden')
-  $artDetailPage.classList.add('hidden')
-  $artDetailPage.innerHTML = ''
+  hideSection($myCart)
+  hideSection($artDetailPage)
+  window.scrollTo(0, 0)
 }
+
+function hideSection(section) {
+  if (!section.classList.contains('hidden')) {
+    section.classList.add('hidden')
+    section.innerHTML = ''
+  }
+}
+
+// function deleteRow(event) {
+//  var
+//
+// }
+
+// function updateCart(cart, cartItem){
+//
+// }
 
 function getTotalQuantities(cart) {
   var total = 0
@@ -509,4 +543,24 @@ function getProductInfo(productId) {
   if (productId >= 0) {
     return products[productId]
   }
+}
+
+function findCartItem(cartItems, productId) {
+  for (var i = 0; i < cartItems.length; i++) {
+    if (cartItems[i].id === productId) {
+      return i
+    }
+  }
+  return null
+}
+
+function calculateSum(subtotalClass) {
+  var total = 0
+  var subtotals = document.getElementsByClassName(subtotalClass)
+
+  for (var i = 0; i < subtotals.length; i++) {
+    total += Number(subtotals[i].innerHTML)
+  }
+
+  return total
 }
