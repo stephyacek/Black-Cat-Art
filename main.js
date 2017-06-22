@@ -414,15 +414,13 @@ function renderMyCartTotal() {
   var $buttonToCheckout = document.createElement('button')
 
   $cartSubtotal.setAttribute('class', 'cart-subtotal')
-  $cartSubtotal.innerHTML = '<span>Subtotal: $</span>' + calculateSum('row-total')
-  // + addAllNumbers($cartRowTotal.value)
+  $cartSubtotal.innerHTML = 'Subtotal: $ ' + calculateSum('row-total')
 
   $cartTax.setAttribute('class', 'cart-tax')
-  /// + calculateMultiply($cartSubtotal.value, 0.08)
-  $cartTax.textContent = 'Tax (8%): $' + (calculateSum('row-total') * 0.08).toFixed(2)
+  $cartTax.innerHTML = 'Tax (8%): $' + (calculateSum('row-total') * 0.08)
 
   $cartTotal.setAttribute('class', 'cart-total')
-  $cartTotal.textContent = 'Total: $' + (calculateSum('row-total') * 1.08).toFixed(2)
+  $cartTotal.innerHTML = 'Total: $ ' + (calculateSum('row-total') * 1.08)
 
   $buttonToCheckout.setAttribute('class', 'button button-to-checkout')
   $buttonToCheckout.textContent = 'Checkout'
@@ -446,7 +444,7 @@ function calculateSum(subtotalClass) {
     total += Number(subtotals[i].innerHTML)
   }
 
-  return total.toFixed(2)
+  return total
 }
 
 function addIdToCart(identifier) {
