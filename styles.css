@@ -137,11 +137,11 @@ footer {
 }
 
 .back {
+  padding-left: 3rem;
   display: flex;
   color: #49545a;
   text-align: center;
   font-size: 1.5rem;
-  padding: 3rem 0 0 3rem;
   text-decoration-line: underline;
 }
 

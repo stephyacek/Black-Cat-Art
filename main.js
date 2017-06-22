@@ -168,9 +168,11 @@ var $productDescriptions = document.getElementsByClassName('product-description'
 var $artDetailPage = document.querySelector('.artwork-detail-page')
 var $myCart = document.querySelector('.my-cart')
 var $tableHeading = document.querySelector('.table-heading')
+var $backButton = document.querySelector('.back-button')
 
 document.addEventListener('DOMContentLoaded', function () {
   renderCartNav()
+  renderBackButton($backButton)
   renderPhotos(products)
   addClickEvent($images)
   addClickEvent($productDescriptions)
@@ -241,7 +243,7 @@ function renderBackButton(parentElement) {
   $detailNavBar.setAttribute('class', 'detail-nav-bar')
   $detailNavBar.appendChild($back)
   $back.setAttribute('class', 'back')
-  $back.textContent = 'Back to Gallery'
+  $back.textContent = 'Home'
   $back.addEventListener('click', goBack)
 
   parentElement.appendChild($detailNavBar)
@@ -255,7 +257,6 @@ function renderArtwork(artwork) {
   var $titleContainer = document.createElement('span')
   var $title = document.createElement('h2')
   var $message = document.createElement('span')
-  renderBackButton($artDetailPage)
 
   $printContainer.setAttribute('class', 'product-detail')
   $printContainer.appendChild($print)
@@ -390,7 +391,7 @@ function renderMyCartItems(cartItem) {
   $cartQuantityButton.textContent = 'Update'
   $cartQuantityChange.appendChild($cartChangeQuantity)
   $cartQuantityChange.appendChild($cartQuantityButton)
-  // $cartQuantityButton.addEventListener('click', updateCart)
+  $cartQuantityButton.addEventListener('click', updateCart)
 
   $cartDeleteItem.setAttribute('src', 'images/delete.png')
   $cartDeleteItem.setAttribute('class', 'delete-item')
@@ -399,7 +400,7 @@ function renderMyCartItems(cartItem) {
   $cartDelete.setAttribute('class', 'delete-section')
   $cartDelete.appendChild($cartDeleteItem)
   $cartDelete.appendChild($cartDeleteText)
-  // $cartDelete.addEventListener('click', deleteRow)
+  $cartDelete.addEventListener('click', deleteRow)
 
   $cartRowTotal.setAttribute('class', 'row-total')
   $cartRowTotal.textContent = calculateMultiply(cartItem.price, cartItem.quantity)
@@ -414,13 +415,13 @@ function renderMyCartTotal() {
   var $buttonToCheckout = document.createElement('button')
 
   $cartSubtotal.setAttribute('class', 'cart-subtotal')
-  $cartSubtotal.innerHTML = 'Subtotal: $ ' + calculateSum('row-total')
+  $cartSubtotal.innerHTML = 'Subtotal: $ ' + Number(calculateSum('row-total').toFixed(2))
 
   $cartTax.setAttribute('class', 'cart-tax')
-  $cartTax.innerHTML = 'Tax (8%): $' + (calculateSum('row-total') * 0.08)
+  $cartTax.innerHTML = 'Tax (8%): $' + Number(((calculateSum('row-total') * 0.08)).toFixed(2))
 
   $cartTotal.setAttribute('class', 'cart-total')
-  $cartTotal.innerHTML = 'Total: $ ' + (calculateSum('row-total') * 1.08)
+  $cartTotal.innerHTML = 'Total: $ ' + Number(((calculateSum('row-total') * 1.08)).toFixed(2))
 
   $buttonToCheckout.setAttribute('class', 'button button-to-checkout')
   $buttonToCheckout.textContent = 'Checkout'
@@ -439,11 +440,9 @@ function calculateMultiply(price, quantity) {
 function calculateSum(subtotalClass) {
   var total = 0
   var subtotals = document.getElementsByClassName(subtotalClass)
-
   for (var i = 0; i < subtotals.length; i++) {
     total += Number(subtotals[i].innerHTML)
   }
-
   return total
 }
 
@@ -493,13 +492,11 @@ function seeMyCart(event) {
   }
   else {
     var $cartData = document.querySelector('.cart-data')
-    $cartData.innerHTML = ''
     $artworkSection.classList.add('hidden')
     $siteDescription.classList.add('hidden')
     $artDetailPage.classList.add('hidden')
     $artDetailPage.innerHTML = ''
     $myCart.classList.remove('hidden')
-    renderBackButton($myCart)
     cartContents.forEach(function (item) {
       renderMyCartItems(item)
     })
@@ -519,18 +516,44 @@ function goBack(event) {
 function hideSection(section) {
   if (!section.classList.contains('hidden')) {
     section.classList.add('hidden')
-    section.innerHTML = ''
   }
 }
 
-// function deleteRow(event) {
-//  var
-//
-// }
+function deleteRow(event) {
+  var numberInCart = document.querySelector('.number-in-cart')
+  for (var i = 0; i < cartContents.length; i++) {
+    var cartItem = cartContents[i]
+    var itemIndex = findCartItem(cartContents, cartItem.id)
+    if (cartContents[itemIndex].price === cartItem.price) {
+      cartContents.splice(itemIndex)
+      numberInCart.textContent = getTotalQuantities(cartContents)
+      cartContents.forEach(function (item) {
+        renderMyCartItems(item)
+      })
+      renderMyCartTotal()
+    }
+  }
+}
 
-// function updateCart(cart, cartItem){
-//
-// }
+function updateCart(event) {
+  var numberInCart = document.querySelector('.number-in-cart')
+  for (var i = 0; i < cartContents.length; i++) {
+    var cartItem = cartContents[i]
+    var oldQuantity = cartItem.quantity
+    var newQuantity = event.target.parentNode.firstChild.value
+    var itemIndex = findCartItem(cartContents, cartItem.id)
+    if (Number(newQuantity) > 0 && cartContents[itemIndex].price === cartItem.price) {
+      cartContents[itemIndex].splice(2, newQuantity)
+
+      numberInCart.textContent = getTotalQuantities(cartContents)
+      cartContents.forEach(function (item) {
+        renderMyCartItems(item)
+      })
+      renderMyCartTotal()
+    }
+    else (console.log('no'))
+  }
+}
 
 function getTotalQuantities(cart) {
   var total = 0
