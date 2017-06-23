@@ -529,7 +529,6 @@ function deleteRow(event) {
   var numberInCart = document.querySelector('.number-in-cart')
   var productId = event.target.parentNode.getAttribute('product-id')
   var productPrice = event.target.parentNode.getAttribute('product-price')
-
   for (var i = 0; i < cartContents.length; i++) {
     if (cartContents[i].price === productPrice && cartContents[i].id === productId) {
       cartContents.splice(i, 1)
@@ -545,23 +544,28 @@ function deleteRow(event) {
 
 function updateCart(event) {
   var numberInCart = document.querySelector('.number-in-cart')
-  var cartData = document.querySelectorAll('.cart-data')
+  var productId = event.target.getAttribute('product-id')
+  var productPrice = event.target.getAttribute('product-price')
+  var newQuantity = event.target.parentNode.firstChild.value
+
   for (var i = 0; i < cartContents.length; i++) {
-    var cartItem = cartContents[i]
-    var oldQuantity = cartItem.quantity
-    var newQuantity = event.target.parentNode.firstChild.value
-    var itemIndex = findCartItem(cartContents, cartItem.id)
-    if (Number(newQuantity) > 0 && cartContents[itemIndex].price === cartItem.price) {
-      cartContents.splice(2, newQuantity)
-      numberInCart.textContent = getTotalQuantities(cartContents)
-      cartData.innerHTML = ''
-      cartContents.forEach(function (item) {
-        renderMyCartItems(item)
-      })
-      renderMyCartTotal()
+    if (cartContents[i].id === productId && cartContents[i].price === productPrice) {
+      if (Number(newQuantity) > 0) {
+        cartContents[i].quantity = newQuantity
+      }
+      else {
+        cartContents.splice(i, 1)
+      }
     }
-    else (console.log('no'))
   }
+
+  clearCart()
+  cartContents.forEach(function (item) {
+    renderMyCartItems(item)
+  })
+
+  numberInCart.textContent = getTotalQuantities(cartContents)
+  renderMyCartTotal()
 }
 
 function getTotalQuantities(cart) {
