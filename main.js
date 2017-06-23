@@ -167,6 +167,8 @@ var $images = document.getElementsByClassName('artwork-image')
 var $productDescriptions = document.getElementsByClassName('product-description')
 var $artDetailPage = document.querySelector('.artwork-detail-page')
 var $myCart = document.querySelector('.my-cart')
+var $cartData = document.querySelector('.cart-data')
+var $cartCalculation = document.querySelector('.cart-calculation')
 var $tableHeading = document.querySelector('.table-heading')
 var $backButton = document.querySelector('.back-button')
 
@@ -346,7 +348,6 @@ function renderPurchaseContainer() {
 }
 
 function renderMyCartItems(cartItem) {
-  var $cartData = document.querySelector('.cart-data')
   var $dataRow = document.createElement('div')
   var $cartPrint = document.createElement('span')
   var $cartPhoto = document.createElement('img')
@@ -388,6 +389,8 @@ function renderMyCartItems(cartItem) {
   $cartChangeQuantity.setAttribute('max', 99)
   $cartQuantityButton.setAttribute('class', 'button')
   $cartQuantityButton.setAttribute('class', 'cart-update')
+  $cartQuantityButton.setAttribute('product-id', cartItem.id)
+  $cartQuantityButton.setAttribute('product-price', cartItem.price)
   $cartQuantityButton.textContent = 'Update'
   $cartQuantityChange.appendChild($cartChangeQuantity)
   $cartQuantityChange.appendChild($cartQuantityButton)
@@ -398,6 +401,8 @@ function renderMyCartItems(cartItem) {
   $cartDeleteText.setAttribute('class', 'delete-text')
   $cartDeleteText.textContent = 'Delete'
   $cartDelete.setAttribute('class', 'delete-section')
+  $cartDelete.setAttribute('product-id', cartItem.id)
+  $cartDelete.setAttribute('product-price', cartItem.price)
   $cartDelete.appendChild($cartDeleteItem)
   $cartDelete.appendChild($cartDeleteText)
   $cartDelete.addEventListener('click', deleteRow)
@@ -408,7 +413,6 @@ function renderMyCartItems(cartItem) {
 }
 
 function renderMyCartTotal() {
-  var $cartCalculation = document.querySelector('.cart-calculation')
   var $cartSubtotal = document.createElement('div')
   var $cartTax = document.createElement('div')
   var $cartTotal = document.createElement('div')
@@ -487,6 +491,7 @@ function addToCart(event) {
 
 function seeMyCart(event) {
   var $emptyCart = document.querySelector('.empty-cart')
+  clearCart()
   if (cartContents.length === 0) {
     $emptyCart.classList.remove('hidden')
   }
@@ -501,14 +506,15 @@ function seeMyCart(event) {
       renderMyCartItems(item)
     })
     renderMyCartTotal()
+    window.scrollTo(0, 0)
   }
-  window.scrollTo(0, 0)
 }
 
 function goBack(event) {
   $artworkSection.classList.remove('hidden')
   $siteDescription.classList.remove('hidden')
   hideSection($myCart)
+  clearCart()
   hideSection($artDetailPage)
   window.scrollTo(0, 0)
 }
@@ -521,31 +527,34 @@ function hideSection(section) {
 
 function deleteRow(event) {
   var numberInCart = document.querySelector('.number-in-cart')
+  var productId = event.target.parentNode.getAttribute('product-id')
+  var productPrice = event.target.parentNode.getAttribute('product-price')
+
   for (var i = 0; i < cartContents.length; i++) {
-    var cartItem = cartContents[i]
-    var itemIndex = findCartItem(cartContents, cartItem.id)
-    if (cartContents[itemIndex].price === cartItem.price) {
-      cartContents.splice(itemIndex)
-      numberInCart.textContent = getTotalQuantities(cartContents)
-      cartContents.forEach(function (item) {
-        renderMyCartItems(item)
-      })
-      renderMyCartTotal()
+    if (cartContents[i].price === productPrice && cartContents[i].id === productId) {
+      cartContents.splice(i, 1)
     }
   }
+  clearCart()
+  numberInCart.textContent = getTotalQuantities(cartContents)
+  cartContents.forEach(function (item) {
+    renderMyCartItems(item)
+  })
+  renderMyCartTotal()
 }
 
 function updateCart(event) {
   var numberInCart = document.querySelector('.number-in-cart')
+  var cartData = document.querySelectorAll('.cart-data')
   for (var i = 0; i < cartContents.length; i++) {
     var cartItem = cartContents[i]
     var oldQuantity = cartItem.quantity
     var newQuantity = event.target.parentNode.firstChild.value
     var itemIndex = findCartItem(cartContents, cartItem.id)
     if (Number(newQuantity) > 0 && cartContents[itemIndex].price === cartItem.price) {
-      cartContents[itemIndex].splice(2, newQuantity)
-
+      cartContents.splice(2, newQuantity)
       numberInCart.textContent = getTotalQuantities(cartContents)
+      cartData.innerHTML = ''
       cartContents.forEach(function (item) {
         renderMyCartItems(item)
       })
@@ -576,4 +585,9 @@ function findCartItem(cartItems, productId) {
     }
   }
   return null
+}
+
+function clearCart() {
+  $cartData.innerHTML = ''
+  $cartCalculation.innerHTML = ''
 }
