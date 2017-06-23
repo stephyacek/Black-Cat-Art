@@ -252,6 +252,7 @@ function renderBackButton(parentElement) {
 }
 
 function renderArtwork(artwork) {
+  clearDetailPage()
   var $detailNavBar = document.querySelector('.detail-nav-bar')
   var $printContainer = document.createElement('span')
   var $print = document.createElement('img')
@@ -594,4 +595,8 @@ function findCartItem(cartItems, productId) {
 function clearCart() {
   $cartData.innerHTML = ''
   $cartCalculation.innerHTML = ''
+}
+
+function clearDetailPage() {
+  $artDetailPage.innerHTML = ''
 }
