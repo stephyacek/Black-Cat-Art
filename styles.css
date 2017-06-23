@@ -19,7 +19,7 @@ header {
 
 .site-description {
   padding: 3rem;
-  background-color: #e4e8ea;
+  background-color: #eff1f3;
   text-align: center;
 }
 
@@ -47,7 +47,7 @@ header {
   border: 1px solid #aaa;
   border-radius: 1rem;
   margin: 2rem;
-  background-color: #e4e8ea;
+  background-color: #eff1f3;
   box-shadow: #777 2px 0 7px;
 }
 
@@ -107,7 +107,7 @@ footer {
   padding: 1rem;
   border: 1px solid #aaa;
   border-radius: 1rem;
-  background-color: #e4e8ea;
+  background-color: #eff1f3;
   box-shadow: #777 2px 0 7px;
 }
 
@@ -137,16 +137,24 @@ footer {
 }
 
 .back {
+  padding-left: 3rem;
   display: flex;
-  text-decoration: none;
   color: #49545a;
   text-align: center;
   font-size: 1.5rem;
+  text-decoration-line: underline;
 }
 
+.delete-section:hover,
 .back:hover {
   color: #acb6bb;
   cursor: pointer;
+}
+
+.arrow-back {
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
 }
 
 .cart-glyph {
@@ -196,4 +204,115 @@ button {
   position: fixed;
   top: 12rem;
   right: 2rem;
+}
+
+.alert-message {
+  font-weight: 600;
+  text-align: center;
+  display: inline-flex;
+}
+
+.cart-headings {
+  position: relative;
+}
+
+.price-header,
+.quantity-header,
+.change-quantity-header,
+.subtotal-header {
+  position: absolute;
+  font-weight: 600;
+}
+
+.price-header {
+  margin-left: 53rem;
+}
+
+.quantity-header {
+  margin-left: 64rem;
+}
+
+.change-quantity-header {
+  margin-left: 78rem;
+}
+
+.subtotal-header {
+  display: inline-block;
+  margin-left: 115rem;
+}
+
+.my-cart h2 {
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.data {
+  padding-top: 2rem;
+  align-content: center;
+}
+
+.button-to-checkout {
+  max-width: 16rem;
+  padding: 1rem;
+  display: inline-block;
+  margin-left: 90%;
+}
+
+.cart-data span {
+  text-align: center;
+  padding: 0 5rem;
+}
+
+.cart-title {
+  width: 30rem;
+  display: inline-block;
+}
+
+.cart-calculation {
+  text-align: right;
+  margin-right: 15rem;
+  padding: 1rem;
+}
+
+.cart-subtotal,
+.cart-tax,
+.cart-total {
+  padding: 1rem;
+}
+
+.cart-total {
+  font-weight: 600;
+}
+
+.cart-print img {
+  padding: 0;
+  max-width: 8rem;
+}
+
+.delete-item {
+  width: 1rem;
+}
+
+.cart-update {
+  width: 6rem;
+  display: inline-block;
+  text-align: center;
+}
+
+span .delete-text {
+  padding: 0.5rem;
+}
+
+.not-visible {
+  visibility: hidden;
+}
+
+.empty-cart {
+  display: flex;
+  text-align: center;
+  width: 7rem;
+  border: 1px solid #eff1f3;
+  border-radius: 1rem;
+  background-color: #eff1f3;
 }
